@@ -9,7 +9,7 @@ export default function Nav() {
         </div>
         <Link
           to="/about"
-          className="w-24 text-lg sm:text-xl md:text-2xl lg:3xl xl:text-4xl"
+          className="w-24 text-lg sm:text-xl md:text-2xl lg:3xl xl:text-4xl hover:animate-bounce"
         >
           About
         </Link>
@@ -20,7 +20,7 @@ export default function Nav() {
         </div>
         <Link
           to="/projects"
-          className="w-24 text-lg sm:text-xl md:text-2xl lg:3xl xl:text-4xl"
+          className="w-24 text-lg sm:text-xl md:text-2xl lg:3xl xl:text-4xl hover:animate-bounce"
         >
           Projects
         </Link>
@@ -31,7 +31,7 @@ export default function Nav() {
         </div>
         <Link
           to="/contacts"
-          className="w-24 text-lg sm:text-xl md:text-2xl lg:3xl xl:text-4xl"
+          className="w-24 text-lg sm:text-xl md:text-2xl lg:3xl xl:text-4xl hover:animate-bounce"
         >
           Contacts
         </Link>

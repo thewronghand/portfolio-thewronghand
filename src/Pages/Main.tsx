@@ -1,9 +1,9 @@
 import DarkModeButton from "../Components/Header/DarkModeButton";
 import Nav from "../Components/Nav";
-import { useDarkModeState } from "../utils/hooks/useDarkModeState";
+import { useDarkMode } from "../utils/hooks/useDarkMode";
 
 export default function Main() {
-  const darkMode = useDarkModeState();
+  const darkMode = useDarkMode();
 
   return (
     <div className="w-screen h-screen flex flex-col sm:flex-row justify-center items-center">

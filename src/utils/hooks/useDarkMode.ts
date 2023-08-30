@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 
-export const useDarkModeState = () => {
+export const useDarkMode = () => {
   return useSelector((state: RootState) => state.darkMode);
 };

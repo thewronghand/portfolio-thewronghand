@@ -1,10 +1,10 @@
 import { useDispatch } from "react-redux";
-import { useDarkModeState } from "../../utils/hooks/useDarkModeState";
+import { useDarkMode } from "../../utils/hooks/useDarkMode";
 import { toggleDarkMode } from "../../redux/slices/darkModeSlice";
 
 export default function DarkModeButton() {
   const dispatch = useDispatch();
-  const darkMode = useDarkModeState();
+  const darkMode = useDarkMode();
 
   return (
     <button onClick={() => dispatch(toggleDarkMode())}>

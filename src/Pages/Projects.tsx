@@ -5,7 +5,9 @@ export default function Projects() {
   const darkMode = useDarkMode();
 
   return (
-    <div className={`${darkMode ? "text-white bg-slate-500" : "text-black"}`}>
+    <div
+      className={`${darkMode ? "text-white bg-slate-500" : "text-gray-700"}`}
+    >
       <section className="w-screen h-screen flex flex-col justify-center items-center">
         this is projects page
         <Link

@@ -4,7 +4,9 @@ import { useDarkMode } from "../utils/hooks/useDarkMode";
 export default function About() {
   const darkMode = useDarkMode();
   return (
-    <div className={`${darkMode ? "text-white bg-slate-500" : "text-black"}`}>
+    <div
+      className={`${darkMode ? "text-white bg-slate-500" : "text-gray-700"}`}
+    >
       <section className="w-screen h-screen flex flex-col justify-center items-center">
         <section className="w-2/3 sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/2 min-h-1/3">
           <section>

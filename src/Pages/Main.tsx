@@ -8,7 +8,7 @@ export default function Main() {
   return (
     <div
       className={`${
-        darkMode ? "text-white bg-slate-500" : "text-black"
+        darkMode ? "text-white bg-slate-500" : "text-gray-700"
       } w-screen h-screen flex flex-col sm:flex-row justify-center items-center`}
     >
       <div className="flex justify-center items-center w-full h-1/5 sm:w-2/5 text-xl sm:text-2xl md:text-3xl lg:4xl xl:text-4xl">
@@ -19,7 +19,6 @@ export default function Main() {
       <div className="w-full h-1/5 sm:w-1/5 flex justify-center items-center ">
         <Nav />
       </div>
-      <DarkModeButton />
     </div>
   );
 }

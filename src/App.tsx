@@ -5,6 +5,7 @@ import About from "./Pages/About";
 import Projects from "./Pages/Projects";
 import Contacts from "./Pages/Contacts";
 import { useGrain } from "./utils/hooks/useGrain";
+import Skills from "./Pages/Skills";
 
 function App() {
   const canvasRef = useGrain();
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/about" element={<About />} />
+        <Route path="/skills" element={<Skills />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/contacts" element={<Contacts />} />
       </Routes>

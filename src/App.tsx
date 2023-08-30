@@ -1,14 +1,17 @@
 import "./index.css";
 import { Route, Routes } from "react-router-dom";
+import { useGrain } from "./utils/hooks/useGrain";
+import { useDarkModeWithStorage } from "./utils/hooks/useDarkModeWithStorage";
+
 import Main from "./Pages/Main";
 import About from "./Pages/About";
 import Projects from "./Pages/Projects";
 import Contacts from "./Pages/Contacts";
-import { useGrain } from "./utils/hooks/useGrain";
 import Skills from "./Pages/Skills";
-
 function App() {
   const canvasRef = useGrain();
+  useDarkModeWithStorage();
+
   return (
     <>
       <canvas

@@ -6,9 +6,7 @@ export default function Contacts() {
 
   return (
     <section
-      className={`${
-        darkMode ? "text-white bg-slate-500" : "text-gray-700"
-      } transition-all duration-300 ease-in-out`}
+      className={`${darkMode ? "text-white bg-slate-500" : "text-gray-700"}`}
     >
       <section className="w-screen h-screen flex flex-col justify-center items-center text-lg sm:text-xl md:text-2xl lg:3xl xl:text-4xl">
         <section className="w-6/10 h-1/5 flex justify-center items-center flex-col space-y-2">

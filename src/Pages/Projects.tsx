@@ -6,9 +6,7 @@ export default function Projects() {
 
   return (
     <div
-      className={`${
-        darkMode ? "text-white bg-slate-500" : "text-gray-700"
-      } transition-all duration-300 ease-in-out`}
+      className={`${darkMode ? "text-white bg-slate-500" : "text-gray-700"}`}
     >
       <section className="w-screen h-screen flex flex-col justify-center items-center">
         this is projects page

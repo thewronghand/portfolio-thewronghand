@@ -1,5 +1,4 @@
-import DarkModeButton from "../Components/Header/DarkModeButton";
-import Nav from "../Components/Nav";
+import Nav from "../Components/Header/Nav";
 import { useDarkMode } from "../utils/hooks/useDarkMode";
 
 export default function Main() {

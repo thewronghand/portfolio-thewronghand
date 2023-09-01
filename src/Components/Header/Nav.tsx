@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Nav() {
   return (
-    <div className="flex justify-center flex-col space-y-4 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">
+    <div className="flex justify-center flex-col space-y-4 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl">
       <div className="flex items-center">
         <div className="mr-2 text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg">
           01

@@ -1,6 +1,8 @@
 import { useDispatch } from "react-redux";
 import { useDarkMode } from "../../utils/hooks/useDarkMode";
 import { toggleDarkMode } from "../../redux/slices/darkModeSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoon, faSun } from "@fortawesome/free-regular-svg-icons";
 
 export default function DarkModeButton() {
   const dispatch = useDispatch();
@@ -8,7 +10,11 @@ export default function DarkModeButton() {
 
   return (
     <button onClick={() => dispatch(toggleDarkMode())}>
-      {darkMode ? "라이트모드" : "다크모드"}
+      {darkMode ? (
+        <FontAwesomeIcon icon={faSun} size="lg" />
+      ) : (
+        <FontAwesomeIcon icon={faMoon} size="lg" />
+      )}
     </button>
   );
 }

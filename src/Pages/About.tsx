@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
+import { useDarkMode } from "../utils/hooks/useDarkMode";
 
 export default function About() {
+  const darkMode = useDarkMode();
   return (
-    <div>
+    <div
+      className={`${
+        darkMode ? "text-white bg-slate-500" : "text-gray-700"
+      } transition-all duration-300 ease-in-out`}
+    >
       <section className="w-screen h-screen flex flex-col justify-center items-center">
         <section className="w-2/3 sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/2 min-h-1/3">
           <section>
@@ -22,7 +28,12 @@ export default function About() {
             asperiores? Accusantium sint quidem, dignissimos eos dolorum totam
             consectetur voluptate dicta ullam culpa! Consequatur, laborum rem.
           </section>
-          <Link to="/" className="text-blue-500 mt-10 inline-block">
+          <Link
+            to="/"
+            className={`${
+              darkMode ? "text-blue-300" : "text-blue-500"
+            } mt-10 inline-block`}
+          >
             to main page
           </Link>
         </section>

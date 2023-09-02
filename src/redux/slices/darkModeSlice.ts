@@ -4,7 +4,7 @@ export const darkModeSlice = createSlice({
   name: "darkMode",
   initialState: false,
   reducers: {
-    setDarkMode: (state, action) => action.payload,
+    setDarkMode: (_state, action) => action.payload,
     toggleDarkMode: (state) => !state,
   },
 });

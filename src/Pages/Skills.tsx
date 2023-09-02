@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import DarkModeButton from "../Components/Header/DarkModeButton";
 import { useDarkMode } from "../utils/hooks/useDarkMode";
+import SkillBox from "../Components/Skills/SkillBox";
 
 export default function Skills() {
   const darkMode = useDarkMode();
@@ -13,6 +14,7 @@ export default function Skills() {
     >
       <section className="w-screen h-screen flex flex-col justify-center items-center">
         this is skills page
+        <SkillBox />
         <Link
           to="/"
           className={`${

@@ -16,6 +16,7 @@ import Nav from "./Components/Header/Nav";
 function App() {
   const darkMode = useDarkMode();
   const canvasRef = useGrain(darkMode);
+
   return (
     <DarkModeWrapper>
       <canvas

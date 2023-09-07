@@ -1,15 +1,9 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import DarkModeButton from "../Components/Header/DarkModeButton";
 import { useDarkMode } from "../utils/hooks/useDarkMode";
 import useFetchCollection from "../utils/hooks/useFetchCollection"; // hook을 import합니다.
-import SkillBox from "./SkillBox"; // SkillBox 컴포넌트를 import합니다.
-
-interface Skill {
-  title: string;
-  icon: string;
-  description: string;
-}
+import SkillBox from "../Components/Skills/SkillBox"; // SkillBox 컴포넌트를 import합니다.
+import { Skill } from "../types";
 
 export default function Skills() {
   const darkMode = useDarkMode();

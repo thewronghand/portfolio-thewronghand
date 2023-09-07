@@ -10,18 +10,24 @@ import Contacts from "./Pages/Contacts";
 import Skills from "./Pages/Skills";
 import DarkModeWrapper from "./utils/DarkModeWrapper";
 import Header from "./Components/Header/Header";
+import { AnimatePresence } from "framer-motion";
+import Nav from "./Components/Header/Nav";
 
 function App() {
   const darkMode = useDarkMode();
   const canvasRef = useGrain(darkMode);
-
   return (
     <DarkModeWrapper>
       <canvas
         ref={canvasRef}
         className="absolute top-0 left-0 w-full h-full z-10 opacity-5 pointer-events-none"
       />
+
+      <AnimatePresence>
+        <Nav key="nav" />
+      </AnimatePresence>
       <Header />
+
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/about" element={<About />} />

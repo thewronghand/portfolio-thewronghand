@@ -1,9 +1,17 @@
 import { useDarkMode } from "../../utils/hooks/useDarkMode";
 import DarkModeButton from "./DarkModeButton";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleMenu } from "../../redux/slices/menuSlice";
+import { RootState } from "../../redux/store";
 
 export default function Header() {
+  const dispatch = useDispatch();
   const darkMode = useDarkMode();
+  const isOpen = useSelector((state: RootState) => state.menu.isOpen);
 
+  const handleMenuClick = () => {
+    dispatch(toggleMenu());
+  };
   return (
     <section
       className={`${
@@ -15,7 +23,7 @@ export default function Header() {
       </section>
       <section className="flex w-40 justify-around items-center p-5">
         <DarkModeButton />
-        <section>메뉴</section>
+        <section onClick={handleMenuClick}>{isOpen ? "X" : "O"}</section>
         <section>언어</section>
       </section>
     </section>

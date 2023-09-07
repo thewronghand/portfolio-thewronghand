@@ -1,13 +1,16 @@
 import { motion } from "framer-motion";
 import NavItem from "./NavItem";
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import { RootState } from "../../redux/store";
 
 export default function Nav() {
+  const isOpen = useSelector((state: RootState) => state.menu.isOpen);
   return (
     <motion.div
-      className="flex justify-center flex-col space-y-4 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl"
+      className="flex justify-center items-center flex-col space-y-4 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl bg-white w-screen h-screen z-5 fixed"
       variants={containerVariants}
       initial="hidden"
-      animate="visible"
+      animate={isOpen ? "visible" : "hidden"}
       exit="exit"
     >
       <NavItem number="01" path="/" title="Home" />

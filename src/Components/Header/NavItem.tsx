@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { toggleMenu } from "../../redux/slices/menuSlice";
 
 interface NavItemProps {
   number: string;
@@ -8,6 +10,11 @@ interface NavItemProps {
 }
 
 export default function NavItem({ number, path, title }: NavItemProps) {
+  const dispatch = useDispatch();
+
+  const handleItemClick = () => {
+    dispatch(toggleMenu());
+  };
   return (
     <motion.div variants={itemVariants} className="flex items-center">
       <div className="mr-2 text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg">
@@ -15,6 +22,7 @@ export default function NavItem({ number, path, title }: NavItemProps) {
       </div>
       <Link
         to={path}
+        onClick={handleItemClick}
         className="text-lg sm:text-xl md:text-2xl lg:3xl xl:text-4xl relative group pb-1"
       >
         {title}

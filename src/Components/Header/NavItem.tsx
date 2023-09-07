@@ -23,7 +23,7 @@ export default function NavItem({ number, path, title }: NavItemProps) {
       <Link
         to={path}
         onClick={handleItemClick}
-        className="text-lg sm:text-xl md:text-2xl lg:3xl xl:text-4xl relative group pb-1"
+        className="text-2xl sm:text-3xl md:text-4xl lg:5xl xl:text-6xl relative group pb-1"
       >
         {title}
         <div className="absolute bottom-0 left-0 h-[2px] bg-current w-0 group-hover:w-full transition-all duration-300"></div>

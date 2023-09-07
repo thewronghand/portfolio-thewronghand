@@ -13,11 +13,13 @@ export default function Nav() {
       animate={isOpen ? "visible" : "hidden"}
       exit="exit"
     >
-      <NavItem number="01" path="/" title="Home" />
-      <NavItem number="02" path="/about" title="About" />
-      <NavItem number="03" path="/skills" title="Skills" />
-      <NavItem number="04" path="/projects" title="Projects" />
-      <NavItem number="05" path="/contacts" title="Contacts" />
+      <div>
+        <NavItem number="01" path="/" title="Home" />
+        <NavItem number="02" path="/about" title="About" />
+        <NavItem number="03" path="/skills" title="Skills" />
+        <NavItem number="04" path="/projects" title="Projects" />
+        <NavItem number="05" path="/contacts" title="Contacts" />
+      </div>
     </motion.div>
   );
 }

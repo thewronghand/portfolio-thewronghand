@@ -25,7 +25,11 @@ export default function Header() {
       <section className="flex w-40 justify-around items-center p-5">
         <DarkModeButton />
         {/* <section onClick={handleMenuClick}>{isOpen ? "X" : "O"}</section> */}
-        <NavButton toggle={() => handleMenuClick()} isOpen={isOpen} />
+        <NavButton
+          toggle={() => handleMenuClick()}
+          isOpen={isOpen}
+          darkMode={darkMode}
+        />
         <section>언어</section>
       </section>
     </section>

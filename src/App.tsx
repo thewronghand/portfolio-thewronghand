@@ -10,8 +10,6 @@ import Contacts from "./Pages/Contacts";
 import Skills from "./Pages/Skills";
 import DarkModeWrapper from "./utils/DarkModeWrapper";
 import Header from "./Components/Header/Header";
-import { useSelector } from "react-redux";
-import { RootState } from "./redux/store";
 import { AnimatePresence } from "framer-motion";
 import Nav from "./Components/Header/Nav";
 

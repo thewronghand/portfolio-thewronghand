@@ -3,6 +3,7 @@ import DarkModeButton from "./DarkModeButton";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleMenu } from "../../redux/slices/menuSlice";
 import { RootState } from "../../redux/store";
+import NavButton from "./NavButton";
 
 export default function Header() {
   const dispatch = useDispatch();
@@ -23,7 +24,8 @@ export default function Header() {
       </section>
       <section className="flex w-40 justify-around items-center p-5">
         <DarkModeButton />
-        <section onClick={handleMenuClick}>{isOpen ? "X" : "O"}</section>
+        {/* <section onClick={handleMenuClick}>{isOpen ? "X" : "O"}</section> */}
+        <NavButton toggle={() => handleMenuClick()} isOpen={isOpen} />
         <section>언어</section>
       </section>
     </section>

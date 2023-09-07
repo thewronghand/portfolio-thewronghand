@@ -1,72 +1,42 @@
-import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import NavItem from "./NavItem";
 
 export default function Nav() {
   return (
-    <div className="flex justify-center flex-col space-y-4 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl">
-      <div className="flex items-center">
-        <div className="mr-2 text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg">
-          01
-        </div>
-        <Link
-          to="/"
-          className="text-lg sm:text-xl md:text-2xl lg:3xl xl:text-4xl relative group pb-1"
-        >
-          Home
-          <div className="absolute bottom-0 left-0 h-[2px] bg-current w-0 group-hover:w-full transition-all duration-300"></div>
-        </Link>
-      </div>
-
-      <div className="flex items-center">
-        <div className="mr-2 text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg">
-          02
-        </div>
-        <Link
-          to="/about"
-          className="text-lg sm:text-xl md:text-2xl lg:3xl xl:text-4xl relative group pb-1"
-        >
-          About
-          <div className="absolute bottom-0 left-0 h-[2px] bg-current w-0 group-hover:w-full transition-all duration-300"></div>
-        </Link>
-      </div>
-
-      <div className="flex items-center">
-        <div className="mr-2 text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg">
-          03
-        </div>
-        <Link
-          to="/skills"
-          className="text-lg sm:text-xl md:text-2xl lg:3xl xl:text-4xl relative group pb-1"
-        >
-          Skills
-          <div className="absolute bottom-0 left-0 h-[2px] bg-current w-0 group-hover:w-full transition-all duration-300"></div>
-        </Link>
-      </div>
-
-      <div className="flex items-center">
-        <div className="mr-2 text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg">
-          04
-        </div>
-        <Link
-          to="/projects"
-          className="text-lg sm:text-xl md:text-2xl lg:3xl xl:text-4xl relative group pb-1"
-        >
-          Projects
-          <div className="absolute bottom-0 left-0 h-[2px] bg-current w-0 group-hover:w-full transition-all duration-300"></div>
-        </Link>
-      </div>
-
-      <div className="flex items-center">
-        <div className="mr-2 text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg">
-          05
-        </div>
-        <Link
-          to="/contacts"
-          className="text-lg sm:text-xl md:text-2xl lg:3xl xl:text-4xl relative group pb-1"
-        >
-          Contacts
-          <div className="absolute bottom-0 left-0 h-[2px] bg-current w-0 group-hover:w-full transition-all duration-300"></div>
-        </Link>
-      </div>
-    </div>
+    <motion.div
+      className="flex justify-center flex-col space-y-4 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+    >
+      <NavItem number="01" path="/" title="Home" />
+      <NavItem number="02" path="/about" title="About" />
+      <NavItem number="03" path="/skills" title="Skills" />
+      <NavItem number="04" path="/projects" title="Projects" />
+      <NavItem number="05" path="/contacts" title="Contacts" />
+    </motion.div>
   );
 }
+
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+    y: -10,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -10,
+    transition: {
+      staggerChildren: 0.1,
+      staggerDirection: -1,
+    },
+  },
+};

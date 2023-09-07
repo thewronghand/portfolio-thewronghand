@@ -1,0 +1,46 @@
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+
+interface NavItemProps {
+  number: string;
+  path: string;
+  title: string;
+}
+
+export default function NavItem({ number, path, title }: NavItemProps) {
+  return (
+    <motion.div variants={itemVariants} className="flex items-center">
+      <div className="mr-2 text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg">
+        {number}
+      </div>
+      <Link
+        to={path}
+        className="text-lg sm:text-xl md:text-2xl lg:3xl xl:text-4xl relative group pb-1"
+      >
+        {title}
+        <div className="absolute bottom-0 left-0 h-[2px] bg-current w-0 group-hover:w-full transition-all duration-300"></div>
+      </Link>
+    </motion.div>
+  );
+}
+
+const itemVariants = {
+  hidden: {
+    opacity: 0,
+    y: -10,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -10,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};

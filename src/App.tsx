@@ -12,10 +12,13 @@ import DarkModeWrapper from "./utils/DarkModeWrapper";
 import Header from "./Components/Header/Header";
 import { AnimatePresence } from "framer-motion";
 import Nav from "./Components/Header/Nav";
+import { useSelector } from "react-redux";
+import { RootState } from "./redux/store";
 
 function App() {
   const darkMode = useDarkMode();
   const canvasRef = useGrain(darkMode);
+  const isOpen = useSelector((state: RootState) => state.menu.isOpen);
 
   return (
     <DarkModeWrapper>
@@ -24,9 +27,8 @@ function App() {
         className="absolute top-0 left-0 w-full h-full z-10 opacity-5 pointer-events-none"
       />
 
-      <AnimatePresence>
-        <Nav key="nav" />
-      </AnimatePresence>
+      <AnimatePresence>{isOpen && <Nav key="nav" />}</AnimatePresence>
+
       <Header />
 
       <Routes>

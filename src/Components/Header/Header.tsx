@@ -24,7 +24,6 @@ export default function Header() {
       </section>
       <section className="flex w-32 justify-around items-center p-5">
         <DarkModeButton />
-        {/* <section onClick={handleMenuClick}>{isOpen ? "X" : "O"}</section> */}
         <NavButton
           toggle={() => handleMenuClick()}
           isOpen={isOpen}

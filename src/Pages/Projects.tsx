@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import { useDarkMode } from "../utils/hooks/useDarkMode";
+import useFetchCollection from "../utils/hooks/useFetchCollection";
+import { Project } from "../types";
+import ProjectList from "../Components/Projects/ProjectList";
 
 export default function Projects() {
   const darkMode = useDarkMode();
+  const { data, loading, error } = useFetchCollection<Project>("/projects");
 
   return (
     <div
@@ -12,6 +16,7 @@ export default function Projects() {
     >
       <section className="w-screen h-screen flex flex-col justify-center items-center">
         this is projects page
+        <ProjectList data={data} />
         <Link
           to="/"
           className={`${

@@ -14,6 +14,7 @@ import { AnimatePresence } from "framer-motion";
 import Nav from "./Components/Header/Nav";
 import { useSelector } from "react-redux";
 import { RootState } from "./redux/store";
+import ProjectDetails from "./Pages/ProjectDetails";
 
 function App() {
   const darkMode = useDarkMode();
@@ -37,6 +38,7 @@ function App() {
         <Route path="/skills" element={<Skills />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/contacts" element={<Contacts />} />
+        <Route path="/projects/:id" element={<ProjectDetails />} />
       </Routes>
     </DarkModeWrapper>
   );

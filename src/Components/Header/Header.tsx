@@ -22,7 +22,7 @@ export default function Header() {
       <section className="w-40 flex justify-center items-center">
         <section>로고위치</section>
       </section>
-      <section className="flex w-40 justify-around items-center p-5">
+      <section className="flex w-32 justify-around items-center p-5">
         <DarkModeButton />
         {/* <section onClick={handleMenuClick}>{isOpen ? "X" : "O"}</section> */}
         <NavButton
@@ -30,7 +30,6 @@ export default function Header() {
           isOpen={isOpen}
           darkMode={darkMode}
         />
-        <section>언어</section>
       </section>
     </section>
   );

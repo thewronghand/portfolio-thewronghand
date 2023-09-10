@@ -20,7 +20,10 @@ export default function ProjectDetails() {
         <>
           <>{data.title}</>
           <>{data.type}</>
-          <div style={{ backgroundColor: `${data.thumbnailBgColor}` }}>
+          <div
+            className="flex justify-center items-center w-48 aspect-square"
+            style={{ backgroundColor: `${data.thumbnailBgColor}` }}
+          >
             <img src={data.thumbnailLogo} alt={data.id} />
           </div>
           <>{data.description}</>

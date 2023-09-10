@@ -16,7 +16,7 @@ export default function Header() {
   return (
     <section
       className={`${
-        darkMode ? "text-white" : " text-gray-700"
+        darkMode ? "text-white bg-slate-500" : " text-gray-700 bg-white"
       } fixed top-0 left-0 flex justify-between items-center w-full h-16 p-15`}
     >
       <section className="w-40 flex justify-center items-center">

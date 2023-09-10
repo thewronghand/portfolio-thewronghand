@@ -1,9 +1,9 @@
 import { useDarkMode } from "../utils/hooks/useDarkMode";
 import useFetchDocument from "../utils/hooks/useFetchDocument";
-import { Profile, Skill } from "../types";
+import { Profile, SkillSet } from "../types";
 import ProfileBox from "../Components/About/ProfileBox";
 import useFetchCollection from "../utils/hooks/useFetchCollection";
-import SkillBox from "../Components/Skills/SkillBox";
+import SkillContainer from "../Components/About/SkillContainer";
 
 export default function About() {
   const darkMode = useDarkMode();
@@ -16,7 +16,8 @@ export default function About() {
     data: skillsData,
     loading: skillsLoading,
     error: skillsError,
-  } = useFetchCollection<Skill>("skills");
+  } = useFetchCollection<SkillSet>("skills");
+
   return (
     <div
       className={`${
@@ -30,7 +31,9 @@ export default function About() {
               <section>
                 {profileLoading && <div>Loading profile data...</div>}
                 {profileError && (
-                  <div>Profile data error: {profileError.message}</div>
+                  <div>
+                    Failed to fetch profile data : {profileError.message}
+                  </div>
                 )}
                 {profileData && (
                   <ProfileBox description={profileData.description} />
@@ -39,15 +42,9 @@ export default function About() {
               <section>
                 {skillsLoading && <div>Loading skill data...</div>}
                 {skillsError && (
-                  <div>Skill data error: {skillsError.message}</div>
+                  <div>Failed to fetch skill data : {skillsError.message}</div>
                 )}
-                {skillsData && (
-                  <ul className="list-none">
-                    {skillsData.map((item) => (
-                      <SkillBox item={item} />
-                    ))}
-                  </ul>
-                )}
+                {skillsData && <SkillContainer data={skillsData} />}
               </section>
             </section>
             {profileData && (

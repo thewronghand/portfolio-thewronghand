@@ -1,41 +1,63 @@
-import { Link } from "react-router-dom";
 import { useDarkMode } from "../utils/hooks/useDarkMode";
+import useFetchDocument from "../utils/hooks/useFetchDocument";
+import { Profile, Skill } from "../types";
+import ProfileBox from "../Components/About/ProfileBox";
+import useFetchCollection from "../utils/hooks/useFetchCollection";
+import SkillBox from "../Components/Skills/SkillBox";
 
 export default function About() {
   const darkMode = useDarkMode();
+  const {
+    data: profileData,
+    loading: profileLoading,
+    error: profileError,
+  } = useFetchDocument<Profile>("/about", "profile");
+  const {
+    data: skillsData,
+    loading: skillsLoading,
+    error: skillsError,
+  } = useFetchCollection<Skill>("skills");
   return (
     <div
       className={`${
         darkMode ? "text-white bg-slate-500" : "text-gray-700"
       } transition-all duration-300 ease-in-out`}
     >
-      <section className="w-screen h-screen flex flex-col justify-center items-center">
-        <section className="w-2/3 sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/2 min-h-1/3">
-          <section>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto
-            mollitia non error similique nisi unde. Itaque tenetur consequatur
-            alias, laudantium maxime ut architecto suscipit quas, quaerat culpa
-            atque cupiditate obcaecati magnam saepe doloribus ad, quidem vel
-            unde quod! Architecto possimus distinctio dicta fugiat, quisquam
-            porro repellendus voluptatum sapiente exercitationem obcaecati quas
-            rem, optio harum iste vero eveniet officiis voluptates similique
-            vitae placeat? Unde enim saepe voluptas dolorum, id corrupti porro
-            aliquid cupiditate minima eaque, debitis earum reprehenderit autem
-            fugit adipisci culpa qui nesciunt officiis dolorem veniam laboriosam
-            fugiat vitae praesentium. Incidunt atque eius omnis repudiandae
-            mollitia impedit adipisci quod placeat, animi magnam voluptatum
-            assumenda porro esse doloremque sed voluptate unde doloribus, minima
-            asperiores? Accusantium sint quidem, dignissimos eos dolorum totam
-            consectetur voluptate dicta ullam culpa! Consequatur, laborum rem.
-          </section>
-          <Link
-            to="/"
-            className={`${
-              darkMode ? "text-blue-300" : "text-blue-500"
-            } mt-10 inline-block`}
-          >
-            to main page
-          </Link>
+      <section>
+        <section className="mt-16">
+          <main className="flex flex-col-reverse md:flex-row md:justify-between w-full">
+            <section className="flex flex-col w-full p-10  ml-0 items-center md:ml-32 md:w-2/3">
+              <section>
+                {profileLoading && <div>Loading profile data...</div>}
+                {profileError && (
+                  <div>Profile data error: {profileError.message}</div>
+                )}
+                {profileData && (
+                  <ProfileBox description={profileData.description} />
+                )}
+              </section>
+              <section>
+                {skillsLoading && <div>Loading skill data...</div>}
+                {skillsError && (
+                  <div>Skill data error: {skillsError.message}</div>
+                )}
+                {skillsData && (
+                  <ul className="list-none">
+                    {skillsData.map((item) => (
+                      <SkillBox item={item} />
+                    ))}
+                  </ul>
+                )}
+              </section>
+            </section>
+            {profileData && (
+              <img
+                src={profileData.imgUrl}
+                alt={profileData.imgUrl}
+                className="rounded-xl min-w-[250px] m-6 md:w-1/5 md:m-0 md:h-auto md:rounded-none md:rounded-bl-[20%]"
+              />
+            )}
+          </main>
         </section>
       </section>
     </div>

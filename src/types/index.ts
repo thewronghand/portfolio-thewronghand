@@ -22,3 +22,8 @@ export interface Project {
   deployUrl: string;
   gitHubUrl: string;
 }
+
+export interface Profile {
+  description: string;
+  imgUrl: string;
+}

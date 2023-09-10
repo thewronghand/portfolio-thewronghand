@@ -26,6 +26,7 @@ export default function SkillContainer({ data }: SkillContainerProps) {
       <SkillList
         data={data}
         onItemClick={(skill: Skill) => setSelectedSkill(skill)}
+        selectedSkill={selectedSkill}
       />
     </section>
   );

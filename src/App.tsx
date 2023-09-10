@@ -7,7 +7,6 @@ import Main from "./Pages/Main";
 import About from "./Pages/About";
 import Projects from "./Pages/Projects";
 import Contacts from "./Pages/Contacts";
-import Skills from "./Pages/Skills";
 import DarkModeWrapper from "./utils/DarkModeWrapper";
 import Header from "./Components/Header/Header";
 import { AnimatePresence } from "framer-motion";
@@ -35,7 +34,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/about" element={<About />} />
-        <Route path="/skills" element={<Skills />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/projects/:id" element={<ProjectDetails />} />

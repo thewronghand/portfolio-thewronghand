@@ -16,7 +16,9 @@ export default function Projects() {
     >
       <section className="w-screen h-screen flex flex-col justify-center items-center">
         this is projects page
-        <ProjectList data={data} />
+        {loading && <div>Loading...</div>}
+        {error && <div>Error: {error.message}</div>}
+        {data && <ProjectList data={data} />}
         <Link
           to="/"
           className={`${

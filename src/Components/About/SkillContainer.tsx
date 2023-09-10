@@ -19,7 +19,10 @@ export default function SkillContainer({ data }: SkillContainerProps) {
   return (
     <section>
       <section>Skills</section>
-      {selectedSkill && <SkillCard skill={selectedSkill} />}
+      {selectedSkill && (
+        <SkillCard key={selectedSkill.title} skill={selectedSkill} />
+      )}
+
       <SkillList
         data={data}
         onItemClick={(skill: Skill) => setSelectedSkill(skill)}

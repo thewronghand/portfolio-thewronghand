@@ -1,7 +1,13 @@
 export interface Skill {
   title: string;
-  icon: string;
-  description: string;
+  imgUrl: string;
+  description: string[];
+  bgColorCode: string;
+}
+
+export interface SkillSet {
+  title: string;
+  data: Skill[];
 }
 
 interface DocUrl {

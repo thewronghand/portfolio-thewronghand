@@ -18,16 +18,23 @@ export default function SkillContainer({ data }: SkillContainerProps) {
 
   return (
     <section>
-      <section>Skills</section>
-      {selectedSkill && (
-        <SkillCard key={selectedSkill.title} skill={selectedSkill} />
-      )}
-
-      <SkillList
-        data={data}
-        onItemClick={(skill: Skill) => setSelectedSkill(skill)}
-        selectedSkill={selectedSkill}
-      />
+      <section className="text-5xl w-full mb-10 border-b-2 pb-5">
+        Skills
+      </section>
+      <section className="flex flex-col md:flex-row">
+        <section className="w-full md:w-1/2 flex justify-center">
+          {selectedSkill && (
+            <SkillCard key={selectedSkill.title} skill={selectedSkill} />
+          )}
+        </section>
+        <section className="w-full flex justify-center mt-10 md:w-1/2">
+          <SkillList
+            data={data}
+            onItemClick={(skill: Skill) => setSelectedSkill(skill)}
+            selectedSkill={selectedSkill}
+          />
+        </section>
+      </section>
     </section>
   );
 }

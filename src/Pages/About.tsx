@@ -39,7 +39,7 @@ export default function About() {
                   <ProfileBox description={profileData.description} />
                 )}
               </section>
-              <section>
+              <section className="mt-16 w-full">
                 {skillsLoading && <div>Loading skill data...</div>}
                 {skillsError && (
                   <div>Failed to fetch skill data : {skillsError.message}</div>

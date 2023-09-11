@@ -3,6 +3,7 @@ import SkillList from "./SkillList";
 import SkillCard from "./SkillCard";
 import { Skill, SkillSet } from "../../types";
 import { AnimatePresence } from "framer-motion";
+import useCacheSkillImages from "../../utils/hooks/useCacheSkillImages";
 
 interface SkillContainerProps {
   data: SkillSet[];
@@ -16,6 +17,8 @@ export default function SkillContainer({ data }: SkillContainerProps) {
       setSelectedSkill(data[0].data[0]);
     }
   }, [data]);
+
+  useCacheSkillImages(data);
 
   return (
     <section className="flex flex-col items-center">

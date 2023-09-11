@@ -12,7 +12,7 @@ export default function SkillList({
   selectedSkill,
 }: SkillListProps) {
   return (
-    <ul className="max-w-[320px] min-w-[320px] mt-[520px] md:max-w-[350px] md:min-w-[350px] md:mt-0 md:w-full rounded-xl p-3 shadow-2xl">
+    <ul className="max-w-[320px] min-w-[320px] md:max-w-[350px] md:min-w-[350px] md:mt-0 md:w-full rounded-xl p-3 shadow-2xl">
       {data.map((skillSet: SkillSet) => (
         <li key={skillSet.title}>
           <section className="cursor-default m-2 text-lg">

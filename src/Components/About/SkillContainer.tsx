@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import SkillList from "./SkillList";
 import SkillCard from "./SkillCard";
 import { Skill, SkillSet } from "../../types";
+import { AnimatePresence } from "framer-motion";
+import SkillCardWrapper from "./SkillCardWrapper";
 
 interface SkillContainerProps {
   data: SkillSet[];
@@ -24,7 +26,13 @@ export default function SkillContainer({ data }: SkillContainerProps) {
       <section className="flex flex-col md:flex-row">
         <section className="w-full md:w-1/2 flex justify-center">
           {selectedSkill && (
-            <SkillCard key={selectedSkill.title} skill={selectedSkill} />
+            <SkillCardWrapper>
+              <AnimatePresence>
+                <section style={{ perspective: "2000", width: "100%" }}>
+                  <SkillCard key={selectedSkill.title} skill={selectedSkill} />
+                </section>
+              </AnimatePresence>
+            </SkillCardWrapper>
           )}
         </section>
         <section className="w-full flex justify-center mt-10 md:w-1/2">

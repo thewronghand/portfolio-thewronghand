@@ -9,7 +9,7 @@ export default function Nav() {
     <motion.div
       className={`${
         darkMode ? "text-white bg-slate-500" : " text-gray-700 bg-white"
-      } flex justify-center items-center flex-col space-y-4  text-5xl w-screen h-screen z-5 fixed transition-all duration-300 ease-in-out`}
+      } flex justify-center items-center flex-col space-y-4  text-5xl w-screen h-screen z-10 fixed transition-all duration-300 ease-in-out`}
       variants={containerVariants}
       initial="hidden"
       animate="visible"

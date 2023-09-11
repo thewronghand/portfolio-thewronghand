@@ -12,18 +12,20 @@ export default function SkillList({
   selectedSkill,
 }: SkillListProps) {
   return (
-    <ul>
+    <ul className="w-[320px] md:w-full rounded-md p-3 shadow-2xl">
       {data.map((skillSet: SkillSet) => (
         <li key={skillSet.title}>
-          <section>{skillSet.title}</section>
-          <ul>
+          <section className="cursor-default m-2 text-lg">
+            {skillSet.title}
+          </section>
+          <ul className="flex flex-row md:flex-col flex-wrap">
             {skillSet.data.map((skill: Skill) => (
               <li
                 key={skill.title}
                 onClick={() => onItemClick(skill)}
-                className={`cursor-pointer ${
+                className={`mx-1 cursor-pointer p-[1px] text-gray-700 bg-slate-100 px-2 rounded-md md:py-[1px] md:my-[2px] hover:bg-blue-100  ${
                   selectedSkill && selectedSkill.title === skill.title
-                    ? "font-bold cursor-default"
+                    ? `text-white bg-blue-400 cursor-default hover:text-white hover:bg-blue-400 hover:cursor-default`
                     : ""
                 }`}
               >

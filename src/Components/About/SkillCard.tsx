@@ -6,36 +6,6 @@ interface SkillCardProps {
   isSelected: boolean;
 }
 
-const containerVariants = {
-  hidden: { x: "-50%", opacity: 0 },
-  show: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      type: "spring",
-      damping: 14,
-      stiffness: 100,
-    },
-  },
-  exit: { x: "-160%" },
-};
-
-const imageVariants = {
-  hidden: { y: "-10%", opacity: 0 },
-  show: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      delay: 0.2, // 애니메이션 시작 전 0.4초 대기
-      duration: 0.5,
-      type: "spring",
-      damping: 11,
-      stiffness: 100,
-    },
-  },
-};
-
 export default function SkillCard({ skill, isSelected }: SkillCardProps) {
   return (
     <motion.li
@@ -65,3 +35,33 @@ export default function SkillCard({ skill, isSelected }: SkillCardProps) {
     </motion.li>
   );
 }
+
+const containerVariants = {
+  hidden: { x: "-50%", opacity: 0 },
+  show: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      type: "spring",
+      damping: 14,
+      stiffness: 100,
+    },
+  },
+  exit: { x: "-160%" },
+};
+
+const imageVariants = {
+  hidden: { y: "-10%", opacity: 0 },
+  show: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: 0.2,
+      duration: 0.5,
+      type: "spring",
+      damping: 11,
+      stiffness: 100,
+    },
+  },
+};

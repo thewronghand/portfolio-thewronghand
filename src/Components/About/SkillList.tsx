@@ -12,7 +12,7 @@ export default function SkillList({
   selectedSkill,
 }: SkillListProps) {
   return (
-    <ul className="w-[320px] md:w-full rounded-md p-3 shadow-2xl">
+    <ul className="max-w-[320px] min-w-[320px] md:max-w-[350px] md:min-w-[350px] md:mt-0 md:w-full rounded-xl p-3 shadow-2xl">
       {data.map((skillSet: SkillSet) => (
         <li key={skillSet.title}>
           <section className="cursor-default m-2 text-lg">
@@ -25,7 +25,7 @@ export default function SkillList({
                 onClick={() => onItemClick(skill)}
                 className={`mx-1 cursor-pointer p-[1px] text-gray-700 bg-slate-100 px-2 rounded-md md:py-[1px] md:my-[2px] hover:bg-blue-100  ${
                   selectedSkill && selectedSkill.title === skill.title
-                    ? `text-white bg-blue-400 cursor-default hover:text-white hover:bg-blue-400 hover:cursor-default`
+                    ? `text-white bg-blue-300 cursor-default hover:bg-blue-300 hover:cursor-default`
                     : ""
                 }`}
               >

@@ -3,7 +3,8 @@ import useFetchDocument from "../utils/hooks/useFetchDocument";
 import { Profile, SkillSet } from "../types";
 import ProfileBox from "../Components/About/ProfileBox";
 import useFetchCollection from "../utils/hooks/useFetchCollection";
-import SkillContainer from "../Components/About/SkillContainer";
+import SkillContainer from "../Components/About/Skills/SkillContainer";
+import ContactContainer from "../Components/About/Contacts/ContactsContainer";
 
 export default function About() {
   const darkMode = useDarkMode();
@@ -26,8 +27,8 @@ export default function About() {
     >
       <section>
         <section className="mt-16">
-          <main className="flex flex-col-reverse md:flex-row md:justify-between w-full">
-            <section className="flex flex-col w-full p-10  ml-0 items-center md:ml-32 md:w-2/3">
+          <main className="flex flex-col-reverse xl:flex-row md:justify-between w-full">
+            <section className="flex flex-col w-full p-10  ml-0 items-center lg:ml-32 lg:w-2/3 xl:w-3/5 2xl:ml-96">
               <section>
                 {profileLoading && <div>Loading profile data...</div>}
                 {profileError && (
@@ -39,19 +40,26 @@ export default function About() {
                   <ProfileBox description={profileData.description} />
                 )}
               </section>
-              <section className="mt-16 w-full">
-                {skillsLoading && <div>Loading skill data...</div>}
-                {skillsError && (
-                  <div>Failed to fetch skill data : {skillsError.message}</div>
-                )}
-                {skillsData && <SkillContainer data={skillsData} />}
+              <section className="w-full flex flex-col 2xl:flex-row">
+                <section className="mt-16 w-full 2xl:w-1/2">
+                  {skillsLoading && <div>Loading skill data...</div>}
+                  {skillsError && (
+                    <div>
+                      Failed to fetch skill data : {skillsError.message}
+                    </div>
+                  )}
+                  {skillsData && <SkillContainer data={skillsData} />}
+                </section>
+                <section className="mt-16 w-full 2xl:w-1/2 2xl:ml-3">
+                  <ContactContainer />
+                </section>
               </section>
             </section>
             {profileData && (
               <img
                 src={profileData.imgUrl}
                 alt={profileData.imgUrl}
-                className="rounded-xl min-w-[250px] m-6 md:w-1/5 md:m-0 md:h-auto md:rounded-none md:rounded-bl-[20%]"
+                className="rounded-xl object-cover min-w-[250px] m-6 h-[60vh] xl:w-1/5 xl:m-0 xl:h-2/3 xl:rounded-none xl:rounded-bl-[20%]"
               />
             )}
           </main>

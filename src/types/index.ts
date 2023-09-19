@@ -10,6 +10,12 @@ export interface SkillSet {
   data: Skill[];
 }
 
+export interface SkillListProps {
+  data: SkillSet[];
+  onItemClick: (skill: Skill) => void;
+  selectedSkill: Skill | null;
+}
+
 interface DocUrl {
   title: string;
   url: string;

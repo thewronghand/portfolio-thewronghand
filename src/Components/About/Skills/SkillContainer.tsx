@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import SkillList from "./SkillList";
 import SkillCard from "./SkillCard";
-import { Skill, SkillSet } from "../../types";
+import { Skill, SkillSet } from "../../../types";
 import { AnimatePresence } from "framer-motion";
-import useCacheSkillImages from "../../utils/hooks/useCacheSkillImages";
+import useCacheSkillImages from "../../../utils/hooks/useCacheSkillImages";
+import MobileSkillList from "./MobileSkillList";
 
 interface SkillContainerProps {
   data: SkillSet[];
@@ -25,8 +26,13 @@ export default function SkillContainer({ data }: SkillContainerProps) {
       <section className="text-5xl w-full mb-10 border-b-2 pb-5">
         Skills
       </section>
-      <section className="w-full xl:w-1/2 flex flex-col md:flex-row">
-        <section className="w-full md:w-1/2 flex justify-center relative">
+      <section className="w-full flex flex-col sm:flex-row 2xl:flex-col 5xl:flex-row">
+        <MobileSkillList
+          data={data}
+          onItemClick={(skill: Skill) => setSelectedSkill(skill)}
+          selectedSkill={selectedSkill}
+        />
+        <section className="w-full flex justify-center">
           <AnimatePresence>
             {selectedSkill && (
               <SkillCard
@@ -37,7 +43,7 @@ export default function SkillContainer({ data }: SkillContainerProps) {
             )}
           </AnimatePresence>
         </section>
-        <section className="w-full flex justify-center mt-10 md:w-1/2">
+        <section className="w-full flex justify-center mt-10">
           <SkillList
             data={data}
             onItemClick={(skill: Skill) => setSelectedSkill(skill)}

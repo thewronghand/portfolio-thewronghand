@@ -39,3 +39,26 @@ export interface Profile {
   description: string;
   imgUrl: string;
 }
+
+export interface Contact {
+  title: string;
+  subtitle: string;
+  data: string;
+  type: string;
+}
+
+export interface ContactMisc {
+  title: string;
+  data: ContactMiscData[];
+  type: string;
+}
+
+export interface ContactMiscData {
+  title: string;
+  img: string;
+  url: string;
+}
+
+export interface ContactSet {
+  data: (Contact | ContactMisc)[];
+}

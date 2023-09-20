@@ -11,6 +11,7 @@ function isContact(data: Contact | ContactMisc): data is Contact {
 const CONTACT_TYPES = {
   MAIL: "mail",
   TEL: "tel",
+  URL: "url",
 };
 
 export default function ContactsItem({ contact }: ContactsItemProps) {
@@ -30,6 +31,16 @@ export default function ContactsItem({ contact }: ContactsItemProps) {
             <a href={`tel:${contact.data}`}>{contact.subtitle}</a>
           </li>
         );
+      case CONTACT_TYPES.URL:
+        return (
+          <li>
+            <section>{contact.title}</section>
+            <a href={contact.data} target="_blank" rel="noopener noreferrer">
+              {contact.subtitle}
+            </a>
+          </li>
+        );
+
       default:
         return (
           <li>

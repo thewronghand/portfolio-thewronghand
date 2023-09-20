@@ -5,7 +5,6 @@ import ProfileBox from "../Components/About/ProfileBox";
 import useFetchCollection from "../utils/hooks/useFetchCollection";
 import SkillContainer from "../Components/About/Skills/SkillContainer";
 import ContactContainer from "../Components/About/Contacts/ContactsContainer";
-import { useEffect } from "react";
 
 export default function About() {
   const darkMode = useDarkMode();

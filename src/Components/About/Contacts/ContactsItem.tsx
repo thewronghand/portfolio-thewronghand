@@ -18,29 +18,29 @@ export default function ContactsItem({ contact }: ContactsItemProps) {
     switch (contact.type) {
       case CONTACT_TYPES.MAIL:
         return (
-          <section>
+          <li>
             <section>{contact.title}</section>
             <a href={`mailto:${contact.data}`}>{contact.subtitle}</a>
-          </section>
+          </li>
         );
       case CONTACT_TYPES.TEL:
         return (
-          <section>
+          <li>
             <section>{contact.title}</section>
             <a href={`tel:${contact.data}`}>{contact.subtitle}</a>
-          </section>
+          </li>
         );
       default:
         return (
-          <section>
+          <li>
             <section>{contact.title}</section>
             <section>{contact.subtitle}</section>
-          </section>
+          </li>
         );
     }
   }
   return (
-    <section>
+    <li>
       <section>{contact.title}</section>
       <ul>
         {contact.data.map((item: ContactMiscData) => (
@@ -51,6 +51,6 @@ export default function ContactsItem({ contact }: ContactsItemProps) {
           </li>
         ))}
       </ul>
-    </section>
+    </li>
   );
 }

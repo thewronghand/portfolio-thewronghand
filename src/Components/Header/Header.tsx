@@ -16,8 +16,8 @@ export default function Header() {
   return (
     <section
       className={`${
-        darkMode ? "text-white bg-slate-500" : " text-gray-700 bg-white"
-      } fixed top-0 left-0 flex justify-between items-center w-full h-16 p-15 z-10`}
+        darkMode ? "text-white" : "text-gray-700"
+      } fixed top-0 left-0 flex justify-between items-center w-full h-16 p-15 z-10 mix-blend-exclusion`}
     >
       <section className="w-40 flex justify-center items-center">
         <section>로고위치</section>

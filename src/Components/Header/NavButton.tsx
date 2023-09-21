@@ -10,7 +10,7 @@ function Path(props: PathProps) {
     <motion.path
       fill="transparent"
       strokeWidth="3"
-      stroke="hsl(0, 0%, 18%)"
+      stroke="currentColor"
       strokeLinecap="round"
       {...props}
     />
@@ -23,19 +23,13 @@ interface NavButtonProps {
   darkMode: boolean;
 }
 
-export default function NavButton({
-  toggle,
-  isOpen,
-  darkMode,
-}: NavButtonProps) {
+export default function NavButton({ toggle, isOpen }: NavButtonProps) {
   const currentState = isOpen ? "open" : "closed";
-  const strokeColor = darkMode ? "white" : "#4A4A4A";
 
   return (
     <button onClick={toggle} className="mt-1">
-      <svg width="23" height="23" viewBox="0 0 23 23">
+      <svg width="30" height="30" viewBox="0 0 23 23">
         <Path
-          stroke={strokeColor}
           initial={currentState}
           animate={currentState}
           variants={{
@@ -44,7 +38,6 @@ export default function NavButton({
           }}
         />
         <Path
-          stroke={strokeColor}
           d="M 2 9.423 L 20 9.423"
           initial={currentState}
           animate={currentState}
@@ -55,7 +48,6 @@ export default function NavButton({
           transition={{ duration: 0.1 }}
         />
         <Path
-          stroke={strokeColor}
           initial={currentState}
           animate={currentState}
           variants={{

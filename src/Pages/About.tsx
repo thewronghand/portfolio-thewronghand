@@ -5,6 +5,7 @@ import ProfileBox from "../Components/About/ProfileBox";
 import useFetchCollection from "../utils/hooks/useFetchCollection";
 import SkillContainer from "../Components/About/Skills/SkillContainer";
 import ContactContainer from "../Components/About/Contacts/ContactsContainer";
+import { useCacheSkillImages } from "../utils/hooks/useCacheSkillImages";
 
 export default function About() {
   const darkMode = useDarkMode();
@@ -23,6 +24,7 @@ export default function About() {
     loading: contactsLoading,
     error: contactsError,
   } = useFetchDocument<ContactSet>("/about", "contacts");
+  useCacheSkillImages(skillsData);
 
   return (
     <div

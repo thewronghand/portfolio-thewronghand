@@ -1,6 +1,6 @@
 import { useDarkMode } from "../utils/hooks/useDarkMode";
 import useFetchDocument from "../utils/hooks/useFetchDocument";
-import { Profile, SkillSet } from "../types";
+import { ContactSet, Profile, SkillSet } from "../types";
 import ProfileBox from "../Components/About/ProfileBox";
 import useFetchCollection from "../utils/hooks/useFetchCollection";
 import SkillContainer from "../Components/About/Skills/SkillContainer";
@@ -18,6 +18,11 @@ export default function About() {
     loading: skillsLoading,
     error: skillsError,
   } = useFetchCollection<SkillSet>("skills");
+  const {
+    data: contactsData,
+    loading: contactsLoading,
+    error: contactsError,
+  } = useFetchDocument<ContactSet>("/about", "contacts");
 
   return (
     <div
@@ -51,7 +56,13 @@ export default function About() {
                   {skillsData && <SkillContainer data={skillsData} />}
                 </section>
                 <section className="mt-16 w-full 2xl:w-1/2 2xl:ml-3">
-                  <ContactContainer />
+                  {contactsLoading && <div>Loading contact data...</div>}
+                  {contactsError && (
+                    <div>
+                      Failed to fetch skill data : {contactsError.message}
+                    </div>
+                  )}
+                  {contactsData && <ContactContainer data={contactsData} />}
                 </section>
               </section>
             </section>

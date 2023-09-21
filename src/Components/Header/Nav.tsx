@@ -19,7 +19,6 @@ export default function Nav() {
         <NavItem number="01" path="/" title="Home" />
         <NavItem number="02" path="/about" title="About" />
         <NavItem number="03" path="/projects" title="Projects" />
-        <NavItem number="04" path="/contacts" title="Contacts" />
       </div>
     </motion.div>
   );

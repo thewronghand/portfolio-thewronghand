@@ -1,12 +1,12 @@
 import { useEffect } from "react";
-import { SkillSet } from "../../types";
+import { Project, SkillSet } from "../../types";
 
 const cacheImage = (url: string) => {
   const img = new Image();
   img.src = url;
 };
 
-const useCacheSkillImages = (data: SkillSet[]) => {
+export const useCacheSkillImages = (data: SkillSet[]) => {
   useEffect(() => {
     const imageUrls = data.flatMap((skillSet) =>
       skillSet.data.map((skill) => skill.imgUrl)
@@ -15,4 +15,15 @@ const useCacheSkillImages = (data: SkillSet[]) => {
   }, [data]);
 };
 
-export default useCacheSkillImages;
+export const useCacheProjectThumbnails = (data: Project[]) => {
+  useEffect(() => {
+    const imageUrls = data.flatMap((project) => project.thumbnailLogo);
+    imageUrls.forEach(cacheImage);
+  }, [data]);
+};
+
+export const useCacheProjectImages = (data: Project) => {
+  useEffect(() => {
+    data.imgs.forEach(cacheImage);
+  });
+};

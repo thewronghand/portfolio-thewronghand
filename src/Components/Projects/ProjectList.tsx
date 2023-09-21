@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Project } from "../../types";
 import { useState } from "react";
+import { useCacheProjectThumbnails } from "../../utils/hooks/useCacheSkillImages";
 
 interface ProjectListProps {
   data: Project[];
@@ -8,6 +9,7 @@ interface ProjectListProps {
 
 export default function ProjectList({ data }: ProjectListProps) {
   const [hoveredItem, setHoveredItem] = useState<Project | null>(null);
+  useCacheProjectThumbnails(data);
 
   return (
     <main>

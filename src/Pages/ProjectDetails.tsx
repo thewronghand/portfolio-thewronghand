@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import useFetchDocument from "../utils/hooks/useFetchDocument";
 import { Project } from "../types";
+import { useCacheProjectImages } from "../utils/hooks/useCacheSkillImages";
 
 export default function ProjectDetails() {
   const { id } = useParams();
@@ -8,9 +9,7 @@ export default function ProjectDetails() {
     "/projects",
     `${id}`
   );
-  console.log(data);
-  console.log(error);
-  console.log(loading);
+  useCacheProjectImages(data);
 
   return (
     <>
@@ -49,7 +48,6 @@ export default function ProjectDetails() {
 
           <div>
             <a href={data.gitHubUrl} target="_blank">
-              {" "}
               깃허브 링크
             </a>
           </div>

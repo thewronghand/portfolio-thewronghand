@@ -15,7 +15,6 @@ export default function Projects() {
       } transition-all duration-300 ease-in-out`}
     >
       <section className="w-screen h-screen flex flex-col justify-center items-center">
-        this is projects page
         {loading && <div>Loading...</div>}
         {error && <div>Error: {error.message}</div>}
         {data && <ProjectList data={data} />}

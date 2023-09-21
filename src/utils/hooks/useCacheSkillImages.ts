@@ -15,15 +15,17 @@ export const useCacheSkillImages = (data: SkillSet[]) => {
   }, [data]);
 };
 
-export const useCacheProjectThumbnails = (data: Project[]) => {
+export const useCacheProjectThumbnails = (data: Project[] | null) => {
   useEffect(() => {
-    const imageUrls = data.flatMap((project) => project.thumbnailLogo);
-    imageUrls.forEach(cacheImage);
+    if (data) {
+      const imageUrls = data.flatMap((project) => project.thumbnailLogo);
+      imageUrls.forEach(cacheImage);
+    }
   }, [data]);
 };
 
-export const useCacheProjectImages = (data: Project) => {
+export const useCacheProjectImages = (data: Project | null) => {
   useEffect(() => {
-    data.imgs.forEach(cacheImage);
-  });
+    data && data.imgs.forEach(cacheImage);
+  }, [data]);
 };

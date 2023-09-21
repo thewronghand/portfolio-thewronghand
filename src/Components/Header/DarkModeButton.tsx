@@ -31,8 +31,8 @@ const MoonIcon = () => {
   return (
     <motion.svg
       xmlns="http://www.w3.org/2000/svg"
-      width="1.25em"
-      height="1.25em"
+      width="25"
+      height="25"
       viewBox="0 0 50 50"
       key="moon"
       className="focus:outline-none active:outline-none"
@@ -64,8 +64,8 @@ const SunIcon = () => {
   return (
     <motion.svg
       key="sun"
-      width="1.25em"
-      height="1.25em"
+      width="25"
+      height="25"
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

@@ -14,54 +14,82 @@ const CONTACT_TYPES = {
   URL: "url",
 };
 
+interface ListItemProps {
+  title: string;
+  children: React.ReactNode;
+}
+
+function ListItem({ title, children }: ListItemProps) {
+  return (
+    <li className="flex items-center mx-2">
+      <section className="mr-2 text-3xl py-4 pr-2 border-r-2 cursor-default min-w-[98px]">
+        {title}
+      </section>
+      <section className="text-xl min-w-[206px]">{children}</section>
+    </li>
+  );
+}
+
 export default function ContactsItem({ contact }: ContactsItemProps) {
   if (isContact(contact)) {
+    let content;
     switch (contact.type) {
       case CONTACT_TYPES.MAIL:
-        return (
-          <li>
-            <section>{contact.title}</section>
-            <a href={`mailto:${contact.data}`}>{contact.subtitle}</a>
-          </li>
+        content = (
+          <a
+            className="hover:text-blue-400 transition-all ease-in-out"
+            href={`mailto:${contact.data}`}
+          >
+            {contact.subtitle}
+          </a>
         );
+        break;
       case CONTACT_TYPES.TEL:
-        return (
-          <li>
-            <section>{contact.title}</section>
-            <a href={`tel:${contact.data}`}>{contact.subtitle}</a>
-          </li>
+        content = (
+          <a
+            className="hover:text-blue-400 transition-all ease-in-out"
+            href={`tel:${contact.data}`}
+          >
+            {contact.subtitle}
+          </a>
         );
+        break;
       case CONTACT_TYPES.URL:
-        return (
-          <li>
-            <section>{contact.title}</section>
-            <a href={contact.data} target="_blank" rel="noopener noreferrer">
-              {contact.subtitle}
-            </a>
-          </li>
+        content = (
+          <a
+            className="hover:text-blue-400 transition-all ease-in-out"
+            href={contact.data}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {contact.subtitle}
+          </a>
         );
-
+        break;
       default:
-        return (
-          <li>
-            <section>{contact.title}</section>
-            <section>{contact.subtitle}</section>
-          </li>
+        content = (
+          <section className="hover:text-blue-400 transition-all ease-in-out">
+            {contact.subtitle}
+          </section>
         );
     }
+    return <ListItem title={contact.title}>{content}</ListItem>;
   }
+
   return (
-    <li>
-      <section>{contact.title}</section>
-      <ul>
+    <ListItem title={contact.title}>
+      <ul className="flex">
         {contact.data.map((item: ContactMiscData) => (
-          <li key={item.title}>
+          <li
+            key={item.title}
+            className="w-8 h-8 mx-[2px] hover:-translate-y-1 ease-in-out transition-all active:translate-y-0"
+          >
             <a href={`${item.url}`} target="_blank" rel="noopener noreferrer">
               <img src={item.img} alt={item.title} />
             </a>
           </li>
         ))}
       </ul>
-    </li>
+    </ListItem>
   );
 }

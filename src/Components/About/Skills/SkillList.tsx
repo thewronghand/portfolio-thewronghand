@@ -17,9 +17,9 @@ export default function SkillList({
               <li
                 key={skill.title}
                 onClick={() => onItemClick(skill)}
-                className={`mx-1 cursor-pointer p-[1px] text-gray-700 bg-slate-100 px-2 rounded-md py-[1px] my-[2px] hover:bg-blue-100  ${
+                className={`mx-1 cursor-pointer p-[1px] text-gray-700 bg-slate-100 px-2 rounded-md py-[1px] my-[2px] hover:bg-blue-100 active:bg-blue-200 transition-all ease-in-out ${
                   selectedSkill && selectedSkill.title === skill.title
-                    ? `text-white bg-blue-300 cursor-default hover:bg-blue-300 hover:cursor-default`
+                    ? `text-white bg-blue-400 cursor-default hover:bg-blue-400 active:bg-blue-400 hover:cursor-default`
                     : ""
                 }`}
               >

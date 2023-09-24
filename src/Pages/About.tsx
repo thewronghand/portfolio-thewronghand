@@ -30,10 +30,10 @@ export default function About() {
     <div
       className={`${
         darkMode ? "text-white bg-slate-500" : "text-gray-700"
-      } transition-all duration-300 ease-in-out`}
+      } transition-all duration-300 ease-in-out pt-10 xl:pt-0 min-h-screen`}
     >
       <section>
-        <section className="mt-16">
+        <section>
           <main className="flex flex-col-reverse xl:flex-row md:justify-between w-full">
             <section className="flex flex-col w-full p-10  ml-0 items-center lg:ml-32 lg:w-2/3 xl:w-3/5 2xl:ml-96">
               <section>
@@ -57,7 +57,7 @@ export default function About() {
                   )}
                   {skillsData && <SkillContainer data={skillsData} />}
                 </section>
-                <section className="mt-16 w-full 2xl:w-1/2 2xl:ml-3">
+                <section className="mt-16 w-full 2xl:w-1/2">
                   {contactsLoading && <div>Loading contact data...</div>}
                   {contactsError && (
                     <div>
@@ -72,7 +72,7 @@ export default function About() {
               <img
                 src={profileData.imgUrl}
                 alt={profileData.imgUrl}
-                className="rounded-xl object-cover min-w-[250px] m-6 h-[60vh] xl:w-1/5 xl:m-0 xl:h-2/3 xl:rounded-none xl:rounded-bl-[20%]"
+                className="rounded-xl object-cover min-w-[250px] m-6 h-[60vh] xl:w-2/5 2xl:w-1/5 xl:m-0 xl:h-2/3 xl:rounded-none xl:rounded-bl-[20%]"
               />
             )}
           </main>

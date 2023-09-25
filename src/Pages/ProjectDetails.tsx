@@ -2,8 +2,10 @@ import { useParams } from "react-router-dom";
 import useFetchDocument from "../utils/hooks/useFetchDocument";
 import { Project } from "../types";
 import { useCacheProjectImages } from "../utils/hooks/useCacheSkillImages";
+import { useDarkMode } from "../utils/hooks/useDarkMode";
 
 export default function ProjectDetails() {
+  const darkMode = useDarkMode();
   const { id } = useParams();
   const { data, error, loading } = useFetchDocument<Project>(
     "/projects",
@@ -12,7 +14,11 @@ export default function ProjectDetails() {
   useCacheProjectImages(data);
 
   return (
-    <>
+    <main
+      className={` transition-all duration-300 ease-in-out ${
+        darkMode ? "text-white bg-slate-500" : "text-gray-700"
+      }`}
+    >
       {loading && <div>Loading...</div>}
       {error && <div>Error: {error.message}</div>}
       {data && (
@@ -59,6 +65,6 @@ export default function ProjectDetails() {
           </>
         </>
       )}
-    </>
+    </main>
   );
 }

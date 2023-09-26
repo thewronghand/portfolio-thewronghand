@@ -5,7 +5,7 @@ import { toggleMenu } from "../../redux/slices/menuSlice";
 import { RootState } from "../../redux/store";
 import NavButton from "./NavButton";
 import Logo from "../Main/Logo";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Header() {
   const location = useLocation();
@@ -28,7 +28,9 @@ export default function Header() {
     >
       <section className="w-40 flex justify-center items-center">
         <section className="flex items-center">
-          <Logo width="30" height="30" />
+          <Link to="/">
+            <Logo width="30" height="30" />
+          </Link>
         </section>
       </section>
       <section className="flex w-32 justify-around items-center p-5">

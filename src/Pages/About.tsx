@@ -7,6 +7,7 @@ import SkillContainer from "../Components/About/Skills/SkillContainer";
 import ContactContainer from "../Components/About/Contacts/ContactsContainer";
 import { useCacheSkillImages } from "../utils/hooks/useCacheSkillImages";
 import { motion, AnimatePresence } from "framer-motion";
+import { useMediaQuery } from "../utils/hooks/useMediaQuery";
 
 export default function About() {
   const darkMode = useDarkMode();
@@ -26,6 +27,7 @@ export default function About() {
     error: contactsError,
   } = useFetchDocument<ContactSet>("/about", "contacts");
   useCacheSkillImages(skillsData);
+  const isSmallerThanXL = useMediaQuery("(max-width:1279px)");
 
   return (
     <AnimatePresence>
@@ -84,7 +86,15 @@ export default function About() {
               src={profileData.imgUrl}
               alt={profileData.imgUrl}
               className="rounded-xl object-cover min-w-[250px] m-6 h-[60vh] xl:w-2/5 2xl:w-1/5 xl:m-0 xl:h-2/3 xl:rounded-none xl:rounded-bl-[20%]"
-              variants={imageVariants}
+              initial={{ opacity: 0, y: -100 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: isSmallerThanXL ? 0.5 : 1.5,
+                  duration: 0.7,
+                },
+              }}
             />
           )}
         </motion.main>
@@ -118,21 +128,6 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.5,
-    },
-  },
-};
-
-const imageVariants = {
-  hidden: {
-    opacity: 0,
-    y: -100,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: 1.5,
-      duration: 0.7,
     },
   },
 };

@@ -25,7 +25,10 @@ export default function ProjectListItem({
   const [isHovered, setHovered] = useState(false);
 
   return (
-    <li className="w-full border-t-[1px] last:border-b-[1px] py-4 px-4 lg:py-5 relative">
+    <motion.li
+      className="w-full border-t-[1px] last:border-b-[1px] py-4 px-4 lg:py-5 relative"
+      variants={itemVariants}
+    >
       <Link to={item.id}>
         <section
           className="flex justify-between"
@@ -60,6 +63,27 @@ export default function ProjectListItem({
           <span className="lg:text-lg">{item.type}</span>
         </section>
       </Link>
-    </li>
+    </motion.li>
   );
 }
+
+const itemVariants = {
+  hidden: {
+    opacity: 0,
+    y: -10,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -10,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};

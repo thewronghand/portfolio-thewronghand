@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useDarkMode } from "../utils/hooks/useDarkMode";
 import useFetchCollection from "../utils/hooks/useFetchCollection";
 import { Project } from "../types";
@@ -20,14 +19,6 @@ export default function Projects() {
         {loading && <div>Loading...</div>}
         {error && <div>Error: {error.message}</div>}
         {data && <ProjectList data={data} />}
-        <Link
-          to="/"
-          className={`${
-            darkMode ? "text-blue-300" : "text-blue-500"
-          } mt-10 inline-block`}
-        >
-          return to main
-        </Link>
       </section>
     </div>
   );

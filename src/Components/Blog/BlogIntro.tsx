@@ -40,6 +40,9 @@ export default function BlogIntro() {
           더 많은 옵시디언 고유 문법
         </Anchor>
         을 추가할 예정입니다.
+        <br />
+        아래의 화면에서, 여러분은 제가 무엇을 공부했고, 무엇을 알고 있는지, 어떤
+        인사이트를 가지고 있는지 확인하실 수 있습니다.
       </motion.p>
     </motion.section>
   );

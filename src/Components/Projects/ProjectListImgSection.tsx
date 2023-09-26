@@ -51,7 +51,7 @@ const containerVariants = {
 };
 
 const imageVariants = {
-  hidden: { y: "-30%", opacity: 0 },
+  hidden: { y: "-15%", opacity: 0 },
   show: {
     y: 0,
     opacity: 1,
@@ -59,7 +59,7 @@ const imageVariants = {
       delay: 0.2,
       duration: 0.5,
       type: "spring",
-      damping: 7,
+      damping: 10,
       stiffness: 100,
     },
   },

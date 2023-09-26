@@ -17,13 +17,13 @@ export default function NavItem({ number, path, title }: NavItemProps) {
   };
   return (
     <motion.div variants={itemVariants} className="flex items-center">
-      <div className="mr-2 text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg">
+      <div className="mr-4 text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg h-full cursor-default mt-6 md:mt-10 xl:mt-12">
         {number}
       </div>
       <Link
         to={path}
         onClick={handleItemClick}
-        className="text-[60px] sm:text-[80px] md:text-[90px] lg:[100px] relative group pb-2"
+        className="text-[60px] sm:text-[80px] md:text-[90px] lg:[100px] relative group"
       >
         {title}
         <div className="absolute bottom-0 left-0 h-[2px] bg-current w-0 group-hover:w-full transition-all duration-300"></div>

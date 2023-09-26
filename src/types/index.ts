@@ -62,3 +62,7 @@ export interface ContactMiscData {
 export interface ContactSet {
   data: (Contact | ContactMisc)[];
 }
+
+export interface ProjectListImgSectionProps {
+  hoveredItem: Project | null;
+}

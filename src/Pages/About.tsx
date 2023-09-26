@@ -6,6 +6,8 @@ import useFetchCollection from "../utils/hooks/useFetchCollection";
 import SkillContainer from "../Components/About/Skills/SkillContainer";
 import ContactContainer from "../Components/About/Contacts/ContactsContainer";
 import { useCacheSkillImages } from "../utils/hooks/useCacheSkillImages";
+import { motion, AnimatePresence } from "framer-motion";
+import { useMediaQuery } from "../utils/hooks/useMediaQuery";
 
 export default function About() {
   const darkMode = useDarkMode();
@@ -25,59 +27,107 @@ export default function About() {
     error: contactsError,
   } = useFetchDocument<ContactSet>("/about", "contacts");
   useCacheSkillImages(skillsData);
+  const isSmallerThanXL = useMediaQuery("(max-width:1279px)");
 
   return (
-    <div
-      className={`${
-        darkMode ? "text-white bg-slate-500" : "text-gray-700"
-      } transition-all duration-300 ease-in-out pt-10 xl:pt-0 min-h-screen`}
-    >
-      <section>
-        <section>
-          <main className="flex flex-col-reverse xl:flex-row md:justify-between w-full">
-            <section className="flex flex-col w-full p-10  ml-0 items-center lg:ml-32 lg:w-2/3 xl:w-3/5 2xl:ml-96">
-              <section>
-                {profileLoading && <div>Loading profile data...</div>}
-                {profileError && (
+    <AnimatePresence>
+      <motion.div
+        className={`${
+          darkMode ? "text-white bg-slate-500" : "text-gray-700"
+        } transition-all duration-300 ease-in-out pt-10 xl:pt-0 min-h-screen`}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.main className="flex flex-col-reverse xl:flex-row md:justify-between w-full">
+          <motion.section
+            className="flex flex-col w-full p-10 ml-0 items-center lg:ml-32 lg:w-2/3 xl:w-3/5 2xl:ml-96"
+            variants={containerVariants}
+          >
+            <motion.section variants={itemVariants}>
+              {profileError && (
+                <div>Failed to fetch profile data : {profileError.message}</div>
+              )}
+              {!profileLoading && !profileError && profileData && (
+                <ProfileBox description={profileData.description} />
+              )}
+            </motion.section>
+            <motion.section
+              className="w-full flex flex-col 2xl:flex-row"
+              variants={containerVariants}
+            >
+              <motion.section
+                className="mt-16 w-full 2xl:w-1/2"
+                variants={itemVariants}
+              >
+                {skillsError && (
+                  <div>Failed to fetch skill data : {skillsError.message}</div>
+                )}
+                {!skillsLoading && !skillsError && skillsData && (
+                  <SkillContainer data={skillsData} />
+                )}
+              </motion.section>
+              <motion.section
+                className="mt-16 w-full 2xl:w-1/2"
+                variants={itemVariants}
+              >
+                {contactsError && (
                   <div>
-                    Failed to fetch profile data : {profileError.message}
+                    Failed to fetch skill data : {contactsError.message}
                   </div>
                 )}
-                {profileData && (
-                  <ProfileBox description={profileData.description} />
+                {!contactsLoading && !contactsError && contactsData && (
+                  <ContactContainer data={contactsData} />
                 )}
-              </section>
-              <section className="w-full flex flex-col 2xl:flex-row">
-                <section className="mt-16 w-full 2xl:w-1/2">
-                  {skillsLoading && <div>Loading skill data...</div>}
-                  {skillsError && (
-                    <div>
-                      Failed to fetch skill data : {skillsError.message}
-                    </div>
-                  )}
-                  {skillsData && <SkillContainer data={skillsData} />}
-                </section>
-                <section className="mt-16 w-full 2xl:w-1/2">
-                  {contactsLoading && <div>Loading contact data...</div>}
-                  {contactsError && (
-                    <div>
-                      Failed to fetch skill data : {contactsError.message}
-                    </div>
-                  )}
-                  {contactsData && <ContactContainer data={contactsData} />}
-                </section>
-              </section>
-            </section>
-            {profileData && (
-              <img
-                src={profileData.imgUrl}
-                alt={profileData.imgUrl}
-                className="rounded-xl object-cover min-w-[250px] m-6 h-[60vh] xl:w-2/5 2xl:w-1/5 xl:m-0 xl:h-2/3 xl:rounded-none xl:rounded-bl-[20%]"
-              />
-            )}
-          </main>
-        </section>
-      </section>
-    </div>
+              </motion.section>
+            </motion.section>
+          </motion.section>
+          {profileData && (
+            <motion.img
+              src={profileData.imgUrl}
+              alt={profileData.imgUrl}
+              className="rounded-xl object-cover min-w-[250px] m-6 h-[60vh] xl:w-2/5 2xl:w-1/5 xl:m-0 xl:h-2/3 xl:rounded-none xl:rounded-bl-[20%]"
+              initial={{ opacity: 0, y: -100 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: isSmallerThanXL ? 0.5 : 1.5,
+                  duration: 0.7,
+                },
+              }}
+            />
+          )}
+        </motion.main>
+      </motion.div>
+    </AnimatePresence>
   );
 }
+
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+    y: -10,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.3,
+      staggerChildren: 0.7,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: {
+    opacity: 0,
+    y: -10,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};

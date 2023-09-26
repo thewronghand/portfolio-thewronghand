@@ -34,7 +34,7 @@ export default function ProjectListImgSection({
 }
 
 const containerVariants = {
-  hidden: { x: "-50%", opacity: 0 },
+  hidden: { x: "-20%", opacity: 0 },
   show: {
     x: 0,
     opacity: 1,
@@ -44,7 +44,7 @@ const containerVariants = {
     },
   },
   exit: {
-    x: "-160%",
+    x: "-30%",
     opacity: 0,
     transition: { ease: "easeInOut", duration: 0.3 },
   },

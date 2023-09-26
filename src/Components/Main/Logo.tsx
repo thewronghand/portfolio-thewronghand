@@ -95,9 +95,7 @@ export default function Logo({
           strokeLinecap="round"
         />
       </svg>
-      <section
-        className={`cursor-default ${vertical ? "text-3xl mt-3" : "ml-1"}`}
-      >
+      <section className={` ${vertical ? "text-3xl mt-3" : "ml-1"}`}>
         thewronghand
       </section>
     </section>

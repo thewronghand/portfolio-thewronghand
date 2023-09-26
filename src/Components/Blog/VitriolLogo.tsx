@@ -7,7 +7,12 @@ export default function VitriolLogo() {
       height="50"
       xmlns="http://www.w3.org/2000/svg"
       animate={{ rotate: 360 }}
-      transition={{ delay: 1.8, duration: 2, ease: "linear", repeat: Infinity }}
+      transition={{
+        delay: 1.35,
+        duration: 2,
+        ease: "linear",
+        repeat: Infinity,
+      }}
     >
       <motion.g variants={containerVariants} initial="hidden" animate="visible">
         <motion.path

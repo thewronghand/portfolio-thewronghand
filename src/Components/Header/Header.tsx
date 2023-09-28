@@ -6,6 +6,7 @@ import { RootState } from "../../redux/store";
 import NavButton from "./NavButton";
 import Logo from "../Main/Logo";
 import { Link, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export default function Header() {
   const location = useLocation();
@@ -19,7 +20,10 @@ export default function Header() {
     dispatch(toggleMenu());
   };
   return (
-    <section
+    <motion.section
+      variants={headerVariants}
+      initial="hidden"
+      animate="visible"
       className={`${
         darkMode ? "text-white" : "text-gray-700"
       } fixed top-0 left-0 flex justify-between items-center w-full h-16 p-15 z-10 ${
@@ -41,6 +45,23 @@ export default function Header() {
           darkMode={darkMode}
         />
       </section>
-    </section>
+    </motion.section>
   );
 }
+
+const headerVariants = {
+  hidden: {
+    opacity: 0,
+    y: -15,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      type: "spring",
+      damping: 8,
+      stiffness: 100,
+    },
+  },
+};

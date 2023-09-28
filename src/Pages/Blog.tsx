@@ -1,9 +1,14 @@
 import { motion } from "framer-motion";
 import BlogIntro from "../Components/Blog/BlogIntro";
 import { useDarkMode } from "../utils/hooks/useDarkMode";
+import { useEffect } from "react";
 
 export default function Blog() {
   const darkMode = useDarkMode();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <main
       className={`min-h-screen pt-20 flex flex-col justify-center items-center transition-all duration-300 ease-in-out ${

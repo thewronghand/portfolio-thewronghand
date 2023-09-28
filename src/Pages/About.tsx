@@ -91,8 +91,13 @@ export default function About() {
                 opacity: 1,
                 y: 0,
                 transition: {
-                  delay: isSmallerThanXL ? 0.5 : 1.5,
+                  delay: isSmallerThanXL ? 0.4 : 1.5,
                   duration: 0.7,
+                  ...(isSmallerThanXL && {
+                    type: "spring",
+                    damping: 11,
+                    stiffness: 100,
+                  }),
                 },
               }}
             />

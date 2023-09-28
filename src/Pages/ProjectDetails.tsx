@@ -3,6 +3,10 @@ import useFetchDocument from "../utils/hooks/useFetchDocument";
 import { Project } from "../types";
 import { useCacheProjectImages } from "../utils/hooks/useCacheSkillImages";
 import { useDarkMode } from "../utils/hooks/useDarkMode";
+import ProjectImageList from "../Components/ProjectDetails/ProjectImageList";
+import ProjectThumbnail from "../Components/ProjectDetails/ProjectThumbnail";
+import ProjectInfoContainer from "../Components/ProjectDetails/ProjectInfoContainer";
+import { COLORS } from "../utils/constant";
 
 export default function ProjectDetails() {
   const darkMode = useDarkMode();
@@ -15,55 +19,24 @@ export default function ProjectDetails() {
 
   return (
     <main
-      className={` transition-all duration-300 ease-in-out ${
-        darkMode ? "text-white bg-slate-500" : "text-gray-700"
+      className={` pt-16 transition-all duration-300 ease-in-out ${
+        darkMode
+          ? `${COLORS.DARK_MODE_BG} ${COLORS.DARK_MODE_TEXT}`
+          : `${COLORS.LIGHT_MODE_BG} ${COLORS.LIGHT_MODE_TEXT}`
       }`}
     >
-      {loading && <div>Loading...</div>}
       {error && <div>Error: {error.message}</div>}
-      {data && (
-        <>
-          <>{data.title}</>
-          <>{data.type}</>
-          <div
-            className="flex justify-center items-center w-48 aspect-square"
-            style={{ backgroundColor: `${data.thumbnailBgColor}` }}
-          >
-            <img src={data.thumbnailLogo} alt={data.id} />
-          </div>
-          <>{data.description}</>
-          <>
-            {data.stacks.map((item) => (
-              <div>{item}</div>
-            ))}
-          </>
-          <div>
-            <div>문서주소</div>
-            {data.docsUrls.map((item) => (
-              <a href={item.url} target="_blank">
-                {item.title}
-              </a>
-            ))}
-          </div>
-
-          <div>
-            <a href={data.deployUrl} target="_blank">
-              배포링크
-            </a>
-          </div>
-
-          <div>
-            <a href={data.gitHubUrl} target="_blank">
-              깃허브 링크
-            </a>
-          </div>
-
-          <>
-            {data.imgs.map((url, index) => (
-              <img src={url} alt={`${index}`} />
-            ))}
-          </>
-        </>
+      {!loading && !error && data && (
+        <section className="px-14 md:px-28 lg:px-36 xl:px-48 2xl:px-56 3xl:px-64 ">
+          <section className="min-h-[400px] md:min-h-[360px] md:-mt-20">
+            <ProjectThumbnail
+              bgColor={data.thumbnailBgColor}
+              image={data.thumbnailLogo}
+            />
+          </section>
+          <ProjectInfoContainer data={data} />
+          <ProjectImageList imgs={data.imgs} />
+        </section>
       )}
     </main>
   );

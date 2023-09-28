@@ -45,12 +45,12 @@ export default function ProjectInfoContainer({
       <section className="flex items-center mt-1">
         <span className="cursor-default mr-2 text-lg">Links</span>
         <ul className="flex px-2">
-          <li className="px-3 py-1 rounded-2xl bg-blue-300 hover:bg-blue-200 transition-all duration-300 ease-in-out mr-1">
+          <li className="px-3 py-1 rounded-2xl text-white bg-blue-300 hover:bg-blue-200 transition-all duration-300 ease-in-out mr-1">
             <a href={data.deployUrl} target="_blank" rel="noopener noreferrer">
               배포링크
             </a>
           </li>
-          <li className="px-3 py-1 rounded-2xl bg-blue-300 hover:bg-blue-200 transition-all duration-300 ease-in-out">
+          <li className="px-3 py-1 rounded-2xl text-white bg-blue-300 hover:bg-blue-200 transition-all duration-300 ease-in-out">
             <a href={data.gitHubUrl} target="_blank" rel="noopener noreferrer">
               깃허브 링크
             </a>

@@ -1,4 +1,5 @@
 import Logo from "../Components/Main/Logo";
+import { COLORS } from "../utils/constant";
 import { useDarkMode } from "../utils/hooks/useDarkMode";
 
 export default function Main() {
@@ -7,7 +8,9 @@ export default function Main() {
   return (
     <div
       className={`${
-        darkMode ? "text-white bg-slate-500" : "text-gray-700"
+        darkMode
+          ? `${COLORS.DARK_MODE_BG} ${COLORS.DARK_MODE_TEXT}`
+          : `${COLORS.LIGHT_MODE_BG} ${COLORS.LIGHT_MODE_TEXT}`
       } w-screen h-screen flex flex-col justify-center items-center transition-all duration-300 ease-in-out`}
     >
       <Logo

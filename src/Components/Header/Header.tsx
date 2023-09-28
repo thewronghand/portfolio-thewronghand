@@ -7,6 +7,7 @@ import NavButton from "./NavButton";
 import Logo from "../Main/Logo";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
+import { COLORS } from "../../utils/constant";
 
 export default function Header() {
   const location = useLocation();
@@ -25,7 +26,7 @@ export default function Header() {
       initial="hidden"
       animate="visible"
       className={`${
-        darkMode ? "text-white" : "text-gray-700"
+        darkMode ? COLORS.DARK_MODE_TEXT : COLORS.LIGHT_MODE_TEXT
       } fixed top-0 left-0 flex justify-between items-center w-full h-16 p-15 z-10 ${
         isSpecialPage && "mix-blend-difference"
       }`}

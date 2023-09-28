@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import NavItem from "./NavItem";
 import { useDarkMode } from "../../utils/hooks/useDarkMode";
+import { COLORS } from "../../utils/constant";
 
 export default function Nav() {
   const darkMode = useDarkMode();
@@ -8,7 +9,9 @@ export default function Nav() {
   return (
     <motion.div
       className={`${
-        darkMode ? "text-white bg-slate-500" : " text-gray-700 bg-white"
+        darkMode
+          ? `${COLORS.DARK_MODE_BG} ${COLORS.DARK_MODE_TEXT}`
+          : `${COLORS.LIGHT_MODE_BG_WHITE} ${COLORS.LIGHT_MODE_TEXT}`
       } flex justify-center items-center flex-col space-y-4  text-5xl w-screen h-screen z-10 fixed transition-all duration-300 ease-in-out`}
       variants={containerVariants}
       initial="hidden"

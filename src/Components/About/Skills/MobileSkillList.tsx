@@ -39,7 +39,7 @@ export default function MobileSkillList({
             hover:border-blue-300 hover:bg-blue-300
             cursor-pointer p-[2px] m-[1px]
             px-2 rounded-lg border-[1px] ${
-              darkMode ? "border-[#6C7A8F]" : "border-gray-50"
+              darkMode ? "border-gray-500" : "border-gray-50"
             }
             transition-all duration-300 ease-in-out
             `}

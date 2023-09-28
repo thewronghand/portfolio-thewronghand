@@ -8,6 +8,7 @@ import ContactContainer from "../Components/About/Contacts/ContactsContainer";
 import { useCacheSkillImages } from "../utils/hooks/useCacheSkillImages";
 import { motion, AnimatePresence } from "framer-motion";
 import { useMediaQuery } from "../utils/hooks/useMediaQuery";
+import { COLORS } from "../utils/constant";
 
 export default function About() {
   const darkMode = useDarkMode();
@@ -33,7 +34,9 @@ export default function About() {
     <AnimatePresence>
       <motion.div
         className={`${
-          darkMode ? "text-white bg-slate-500" : "text-gray-700"
+          darkMode
+            ? `${COLORS.DARK_MODE_BG} ${COLORS.DARK_MODE_TEXT}`
+            : `${COLORS.LIGHT_MODE_BG} ${COLORS.LIGHT_MODE_TEXT}`
         } transition-all duration-300 ease-in-out pt-10 xl:pt-0 min-h-screen`}
         initial="hidden"
         animate="visible"

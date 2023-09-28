@@ -3,6 +3,7 @@ import useFetchCollection from "../utils/hooks/useFetchCollection";
 import { Project } from "../types";
 import ProjectList from "../Components/Projects/ProjectList";
 import { useCacheProjectThumbnails } from "../utils/hooks/useCacheSkillImages";
+import { COLORS } from "../utils/constant";
 
 export default function Projects() {
   const darkMode = useDarkMode();
@@ -12,7 +13,9 @@ export default function Projects() {
   return (
     <div
       className={`${
-        darkMode ? "text-white bg-slate-500" : "text-gray-700"
+        darkMode
+          ? `${COLORS.DARK_MODE_BG} ${COLORS.DARK_MODE_TEXT}`
+          : `${COLORS.LIGHT_MODE_BG} ${COLORS.LIGHT_MODE_TEXT}`
       } transition-all duration-300 ease-in-out`}
     >
       <section className="w-screen h-screen flex flex-col justify-center items-center">

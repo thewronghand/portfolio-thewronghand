@@ -138,7 +138,7 @@ interface ListItemProps {
 }
 
 const arrowVariants = {
-  hidden: { opacity: 0, x: -10 },
+  hidden: { opacity: 0, x: -5 },
   visible: { opacity: 1, x: 0 },
 };
 

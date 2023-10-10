@@ -28,7 +28,7 @@ export default function Blog() {
         transition={{ delay: 0.6, duration: 0.5 }}
       >
         <iframe
-          src="https://www.naver.com"
+          src="https://vitriol-345e3.web.app/"
           className="w-full max-w-[1000px] h-full"
         ></iframe>
       </motion.div>

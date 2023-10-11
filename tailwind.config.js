@@ -2,6 +2,10 @@
 export default {
   content: ["./src/**/*.{html,js,tsx,jsx,ts}"],
   theme: {
+    fontFamily: {
+      moric: ["Moric"],
+      "young-serif": ["Young Serif", "serif"],
+    },
     extend: {
       screens: {
         "3xl": "1530px",

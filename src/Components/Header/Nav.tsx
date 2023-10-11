@@ -18,7 +18,7 @@ export default function Nav() {
       animate="visible"
       exit="exit"
     >
-      <div>
+      <div className=" font-moric">
         <NavItem number="01" path="/" title="HOME" />
         <NavItem number="02" path="/about" title="ABOUT" />
         <NavItem number="03" path="/projects" title="PROJECTS" />

@@ -18,11 +18,11 @@ export default function Nav() {
       animate="visible"
       exit="exit"
     >
-      <div>
-        <NavItem number="01" path="/" title="HOME" />
-        <NavItem number="02" path="/about" title="ABOUT" />
-        <NavItem number="03" path="/projects" title="PROJECTS" />
-        <NavItem number="04" path="/blog" title="VITRIOL" />
+      <div className=" font-moric font-bold">
+        <NavItem number="01" path="/" title="HoME" />
+        <NavItem number="02" path="/about" title="ABoUT" />
+        <NavItem number="03" path="/projects" title="PRoJECTS" />
+        <NavItem number="04" path="/blog" title="VITRIoL" />
       </div>
     </motion.div>
   );

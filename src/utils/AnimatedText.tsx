@@ -35,7 +35,7 @@ export default function AnimatedText({ text }: AnimatedTextProps) {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="overflow-hidden flex"
+      className="overflow-hidden flex font-young-serif"
     >
       {characters.map((char: string, index) => (
         <motion.span variants={childVariants} className="h-10" key={index}>

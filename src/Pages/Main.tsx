@@ -28,7 +28,8 @@ export default function Main() {
       >
         프론트엔드 개발자 이의현
         <br />
-        (그른손thewronghand)의 포트폴리오 사이트입니다.
+        그른손<span className="font-young-serif text-xs">thewronghand</span>의
+        포트폴리오 사이트입니다.
       </motion.p>
     </div>
   );

@@ -8,10 +8,11 @@ import ContactContainer from "../Components/About/Contacts/ContactsContainer";
 import { useCacheSkillImages } from "../utils/hooks/useCacheSkillImages";
 import { motion, AnimatePresence } from "framer-motion";
 import { useMediaQuery } from "../utils/hooks/useMediaQuery";
-import { COLORS } from "../utils/constant";
+import { useColorScheme } from "../utils/hooks/useColorScheme";
 
 export default function About() {
   const darkMode = useDarkMode();
+  const colorScheme = useColorScheme();
   const {
     data: profileData,
     loading: profileLoading,
@@ -33,11 +34,11 @@ export default function About() {
   return (
     <AnimatePresence>
       <motion.div
-        className={`${
-          darkMode
-            ? `${COLORS.DARK_MODE_BG} ${COLORS.DARK_MODE_TEXT}`
-            : `${COLORS.LIGHT_MODE_BG} ${COLORS.LIGHT_MODE_TEXT}`
-        } transition-all duration-300 ease-in-out pt-10 xl:pt-0 min-h-screen`}
+        style={{
+          color: darkMode ? colorScheme.DARK.TEXT : colorScheme.LIGHT.TEXT,
+          background: darkMode ? colorScheme.DARK.BG : colorScheme.LIGHT.BG,
+        }}
+        className={`transition-all duration-300 ease-in-out pt-10 xl:pt-0 min-h-screen`}
         initial="hidden"
         animate="visible"
       >

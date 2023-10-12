@@ -20,7 +20,7 @@ export default function SkillContainer({ data }: SkillContainerProps) {
 
   return (
     <section className="flex flex-col items-center">
-      <section className="text-5xl w-full mb-10 border-b-2 pb-5 cursor-default">
+      <section className="text-5xl w-full mb-10 border-b-2 border-b-current pb-5 cursor-default">
         Skills
       </section>
       <section className="w-full flex flex-col sm:flex-row 2xl:flex-col 5xl:flex-row">

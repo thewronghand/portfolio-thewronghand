@@ -12,10 +12,12 @@ export default function BlogIntro() {
     >
       <motion.section
         variants={itemVariants}
-        className="text-6xl flex items-center"
+        className="text-5xl flex items-center"
       >
         <VitriolLogo />
-        <span className="ml-1 cursor-default">Vitriol</span>
+        <span className="ml-1 pt-2 cursor-default font-young-serif">
+          Vitriol
+        </span>
       </motion.section>
       <motion.p variants={itemVariants} className="mt-6">
         Vitriol은 <Anchor href="https://obsidian.md/">Obsidian</Anchor>의

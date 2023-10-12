@@ -41,4 +41,21 @@ export const COLOR_SCHEMES = {
       ACCENT: "#de3b00",
     },
   },
+  FLAVOR: {
+    TITLE: "Flavor",
+    DARK: {
+      BG: "#3b3b3b",
+      TEXT: "#ffffff",
+      PRIMARY: "#64c2fc",
+      SECONDARY: "#70e470",
+      ACCENT: "#ff8787",
+    },
+    LIGHT: {
+      BG: "#ffffff",
+      TEXT: "#212121",
+      PRIMARY: "#8ad2ff",
+      SECONDARY: "#a3f0a3",
+      ACCENT: "#ffb3b3",
+    },
+  },
 };

@@ -7,7 +7,25 @@ export const COLORS = {
 };
 
 export const COLOR_SCHEMES = {
+  HARBOR: {
+    TITLE: "Harbor",
+    DARK: {
+      BG: "#4F4F5C",
+      TEXT: "#EEF1F2",
+      PRIMARY: "#F2B5B5",
+      SECONDARY: "#6CC1C1",
+      ACCENT: "#F9D988",
+    },
+    LIGHT: {
+      BG: "#e6f3f3",
+      TEXT: "#4f4f5c",
+      PRIMARY: "#F2B6B6",
+      SECONDARY: "#3E9393",
+      ACCENT: "#F9D988",
+    },
+  },
   TIEFENWALD: {
+    TITLE: "Tiefenwald",
     DARK: {
       BG: "#2c362b",
       TEXT: "#f5e8cc",
@@ -21,22 +39,6 @@ export const COLOR_SCHEMES = {
       PRIMARY: "#f5b19e",
       SECONDARY: "#50634b",
       ACCENT: "#de3b00",
-    },
-  },
-  HARBOR: {
-    DARK: {
-      BG: "#4F4F5C",
-      TEXT: "#EEF1F2",
-      PRIMARY: "#F2B5B5",
-      SECONDARY: "#6CC1C1",
-      ACCENT: "#EDF6BA",
-    },
-    LIGHT: {
-      BG: "#e6f3f3",
-      TEXT: "#4f4f5c",
-      PRIMARY: "#F2B6B6",
-      SECONDARY: "#3E9393",
-      ACCENT: "#EDF6BA",
     },
   },
 };

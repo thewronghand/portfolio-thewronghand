@@ -5,7 +5,7 @@ interface ProjectImageListProps {
 export default function ProjectImageList({ imgs }: ProjectImageListProps) {
   return (
     <section className=" mb-32">
-      <section className="text-3xl pt-4 pb-2 border-b-2 border-solid mb-4">
+      <section className="text-3xl pt-4 pb-2 border-b-2 border-current border-solid mb-4">
         Sample Images
       </section>
       <ul className="px-6">

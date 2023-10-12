@@ -1,12 +1,15 @@
 import { motion } from "framer-motion";
+import { useColorScheme } from "../../utils/hooks/useColorScheme";
 
 export default function VitriolLogo() {
+  const colorScheme = useColorScheme();
   return (
     <motion.svg
       width="50"
       height="50"
       xmlns="http://www.w3.org/2000/svg"
       animate={{ rotate: 360 }}
+      stroke={colorScheme.LIGHT.ACCENT}
       transition={{
         delay: 1.35,
         duration: 2,
@@ -18,7 +21,6 @@ export default function VitriolLogo() {
         <motion.path
           d="M 25 5 A 20 20 0 0 1 25 45 A 20 20 0 0 1 25 5"
           fill="none"
-          stroke="currentcolor"
           strokeWidth="7"
           variants={circleVariant}
         />
@@ -27,7 +29,6 @@ export default function VitriolLogo() {
           y1="5"
           x2="25"
           y2="45"
-          stroke="currentcolor"
           strokeWidth="7"
           variants={verticalLineVariant}
         />
@@ -36,7 +37,6 @@ export default function VitriolLogo() {
           y1="25"
           x2="45"
           y2="25"
-          stroke="currentcolor"
           strokeWidth="7"
           variants={horizontalLineVariant}
         />

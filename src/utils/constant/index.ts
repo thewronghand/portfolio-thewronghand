@@ -58,4 +58,21 @@ export const COLOR_SCHEMES = {
       ACCENT: "#ffb3b3",
     },
   },
+  APARTMENT: {
+    TITLE: "Apartment",
+    DARK: {
+      BG: "#272625",
+      TEXT: "#e8e5de",
+      PRIMARY: "#cd6565",
+      SECONDARY: "#008f94",
+      ACCENT: "#65b8cd",
+    },
+    LIGHT: {
+      BG: "#fbf7ec",
+      TEXT: "#1c1221",
+      PRIMARY: "#ee9467",
+      SECONDARY: "#008f94",
+      ACCENT: "#ffb3b3",
+    },
+  },
 };

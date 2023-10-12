@@ -6,7 +6,6 @@ import { useDarkMode } from "./utils/hooks/useDarkMode";
 import Main from "./Pages/Main";
 import About from "./Pages/About";
 import Projects from "./Pages/Projects";
-import DarkModeWrapper from "./utils/DarkModeWrapper";
 import Header from "./Components/Header/Header";
 import { AnimatePresence } from "framer-motion";
 import Nav from "./Components/Header/Nav";
@@ -14,6 +13,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "./redux/store";
 import ProjectDetails from "./Pages/ProjectDetails";
 import Blog from "./Pages/Blog";
+import AppSettingsWrapper from "./utils/AppSettingsWrapper";
 
 function App() {
   const darkMode = useDarkMode();
@@ -21,24 +21,26 @@ function App() {
   const isOpen = useSelector((state: RootState) => state.menu.isOpen);
 
   return (
-    <DarkModeWrapper>
-      <canvas
-        ref={canvasRef}
-        className="fixed top-0 left-0 w-screen h-screen z-50 opacity-5 pointer-events-none"
-      />
+    <div className="w-full h-full">
+      <AppSettingsWrapper>
+        <canvas
+          ref={canvasRef}
+          className="fixed top-0 left-0 w-screen h-screen z-50 opacity-5 pointer-events-none"
+        />
 
-      <AnimatePresence>{isOpen && <Nav key="nav" />}</AnimatePresence>
+        <AnimatePresence>{isOpen && <Nav key="nav" />}</AnimatePresence>
 
-      <Header />
+        <Header />
 
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/projects/:id" element={<ProjectDetails />} />
-        <Route path="/blog" element={<Blog />} />
-      </Routes>
-    </DarkModeWrapper>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:id" element={<ProjectDetails />} />
+          <Route path="/blog" element={<Blog />} />
+        </Routes>
+      </AppSettingsWrapper>
+    </div>
   );
 }
 

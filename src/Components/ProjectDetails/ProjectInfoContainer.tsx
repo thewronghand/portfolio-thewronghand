@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
 import { Project } from "../../types";
+import { useColorScheme } from "../../utils/hooks/useColorScheme";
+import { useDarkMode } from "../../utils/hooks/useDarkMode";
 
 export default function ProjectInfoContainer({
   data,
 }: ProjectInfoContainerProps) {
+  const colorScheme = useColorScheme();
+  const darkMode = useDarkMode();
+
   return (
     <section className="">
-      <section className="text-3xl pt-6 pb-4 border-solid border-b-2 mb-4 cursor-default">
+      <section className="text-3xl pt-6 pb-4 border-solid border-b-2 border-current mb-4 cursor-default">
         {data.title}
       </section>
       <section className="text-xl text-right mb-2 pr-2 cursor-default">
@@ -16,7 +21,11 @@ export default function ProjectInfoContainer({
       <ul className="flex flex-wrap content-start mb-2">
         {data.stacks.map((item) => (
           <li
-            style={{ background: data.secondaryColor }}
+            style={{
+              background: darkMode
+                ? colorScheme.DARK.PRIMARY
+                : colorScheme.LIGHT.PRIMARY,
+            }}
             className={`mt-2 text-white py-1 px-3 mr-1 rounded-2xl cursor-default`}
           >
             {item}
@@ -45,12 +54,26 @@ export default function ProjectInfoContainer({
       <section className="flex items-center mt-1">
         <span className="cursor-default mr-2 text-lg">Links</span>
         <ul className="flex px-2">
-          <li className="px-3 py-1 rounded-2xl text-white bg-blue-300 hover:bg-blue-200 transition-all duration-300 ease-in-out mr-1">
+          <li
+            style={{
+              background: darkMode
+                ? colorScheme.DARK.ACCENT
+                : colorScheme.LIGHT.ACCENT,
+            }}
+            className="px-3 py-1 rounded-2xl text-white hover:bg-blue-200 transition-all duration-300 ease-in-out mr-1"
+          >
             <a href={data.deployUrl} target="_blank" rel="noopener noreferrer">
               배포링크
             </a>
           </li>
-          <li className="px-3 py-1 rounded-2xl text-white bg-blue-300 hover:bg-blue-200 transition-all duration-300 ease-in-out">
+          <li
+            style={{
+              background: darkMode
+                ? colorScheme.DARK.SECONDARY
+                : colorScheme.LIGHT.SECONDARY,
+            }}
+            className="px-3 py-1 rounded-2xl text-white hover:bg-blue-200 transition-all duration-300 ease-in-out"
+          >
             <a href={data.gitHubUrl} target="_blank" rel="noopener noreferrer">
               깃허브 링크
             </a>

@@ -6,10 +6,11 @@ import { useDarkMode } from "../utils/hooks/useDarkMode";
 import ProjectImageList from "../Components/ProjectDetails/ProjectImageList";
 import ProjectThumbnail from "../Components/ProjectDetails/ProjectThumbnail";
 import ProjectInfoContainer from "../Components/ProjectDetails/ProjectInfoContainer";
-import { COLORS } from "../utils/constant";
+import { useColorScheme } from "../utils/hooks/useColorScheme";
 
 export default function ProjectDetails() {
   const darkMode = useDarkMode();
+  const colorScheme = useColorScheme();
   const { id } = useParams();
   const { data, error, loading } = useFetchDocument<Project>(
     "/projects",
@@ -19,11 +20,11 @@ export default function ProjectDetails() {
 
   return (
     <main
-      className={` pt-16 transition-all duration-300 ease-in-out ${
-        darkMode
-          ? `${COLORS.DARK_MODE_BG} ${COLORS.DARK_MODE_TEXT}`
-          : `${COLORS.LIGHT_MODE_BG} ${COLORS.LIGHT_MODE_TEXT}`
-      }`}
+      style={{
+        color: darkMode ? colorScheme.DARK.TEXT : colorScheme.LIGHT.TEXT,
+        background: darkMode ? colorScheme.DARK.BG : colorScheme.LIGHT.BG,
+      }}
+      className={` pt-16 transition-all duration-300 ease-in-out h-full `}
     >
       {error && <div>Error: {error.message}</div>}
       {!loading && !error && data && (

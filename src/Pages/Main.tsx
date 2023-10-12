@@ -1,17 +1,19 @@
 import Logo from "../Components/Main/Logo";
 import { COLORS } from "../utils/constant";
+import { useColorScheme } from "../utils/hooks/useColorScheme";
 import { useDarkMode } from "../utils/hooks/useDarkMode";
 import { motion } from "framer-motion";
 
 export default function Main() {
   const darkMode = useDarkMode();
+  const colorScheme = useColorScheme();
   return (
     <div
-      className={`${
-        darkMode
-          ? `${COLORS.DARK_MODE_BG} ${COLORS.DARK_MODE_TEXT}`
-          : `${COLORS.LIGHT_MODE_BG} ${COLORS.LIGHT_MODE_TEXT}`
-      } w-screen h-screen flex flex-col justify-center items-center transition-all duration-300 ease-in-out`}
+      style={{
+        color: darkMode ? colorScheme.DARK.TEXT : colorScheme.LIGHT.TEXT,
+        background: darkMode ? colorScheme.DARK.BG : colorScheme.LIGHT.BG,
+      }}
+      className={`w-screen h-screen flex flex-col justify-center items-center transition-all duration-300 ease-in-out`}
     >
       <Logo
         width="125"

@@ -24,7 +24,7 @@ export default function ProjectDetails() {
         color: darkMode ? colorScheme.DARK.TEXT : colorScheme.LIGHT.TEXT,
         background: darkMode ? colorScheme.DARK.BG : colorScheme.LIGHT.BG,
       }}
-      className={` pt-16 transition-all duration-300 ease-in-out `}
+      className={` pt-16 transition-all duration-300 ease-in-out h-full `}
     >
       {error && <div>Error: {error.message}</div>}
       {!loading && !error && data && (

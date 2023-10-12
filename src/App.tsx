@@ -21,24 +21,26 @@ function App() {
   const isOpen = useSelector((state: RootState) => state.menu.isOpen);
 
   return (
-    <AppSettingsWrapper>
-      <canvas
-        ref={canvasRef}
-        className="fixed top-0 left-0 w-screen h-screen z-50 opacity-5 pointer-events-none"
-      />
+    <div className="w-full h-full">
+      <AppSettingsWrapper>
+        <canvas
+          ref={canvasRef}
+          className="fixed top-0 left-0 w-screen h-screen z-50 opacity-5 pointer-events-none"
+        />
 
-      <AnimatePresence>{isOpen && <Nav key="nav" />}</AnimatePresence>
+        <AnimatePresence>{isOpen && <Nav key="nav" />}</AnimatePresence>
 
-      <Header />
+        <Header />
 
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/projects/:id" element={<ProjectDetails />} />
-        <Route path="/blog" element={<Blog />} />
-      </Routes>
-    </AppSettingsWrapper>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:id" element={<ProjectDetails />} />
+          <Route path="/blog" element={<Blog />} />
+        </Routes>
+      </AppSettingsWrapper>
+    </div>
   );
 }
 

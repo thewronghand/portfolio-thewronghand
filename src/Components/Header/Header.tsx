@@ -7,7 +7,7 @@ import NavButton from "./NavButton";
 import Logo from "../Main/Logo";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { COLORS } from "../../utils/constant";
+import { useColorScheme } from "../../utils/hooks/useColorScheme";
 
 export default function Header() {
   const location = useLocation();
@@ -16,6 +16,7 @@ export default function Header() {
   const dispatch = useDispatch();
   const darkMode = useDarkMode();
   const isOpen = useSelector((state: RootState) => state.menu.isOpen);
+  const colorScheme = useColorScheme();
 
   const handleMenuClick = () => {
     dispatch(toggleMenu());
@@ -25,9 +26,10 @@ export default function Header() {
       variants={headerVariants}
       initial="hidden"
       animate="visible"
-      className={`${
-        darkMode ? COLORS.DARK_MODE_TEXT : COLORS.LIGHT_MODE_TEXT
-      } fixed top-0 left-0 flex justify-between items-center w-full h-16 p-15 z-10 ${
+      style={{
+        color: darkMode ? colorScheme.DARK.TEXT : colorScheme.LIGHT.TEXT,
+      }}
+      className={`fixed top-0 left-0 flex justify-between items-center w-full h-16 p-15 z-10 ${
         isSpecialPage && "mix-blend-difference"
       }`}
     >

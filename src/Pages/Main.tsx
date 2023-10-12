@@ -1,5 +1,4 @@
 import Logo from "../Components/Main/Logo";
-import { COLORS } from "../utils/constant";
 import { useColorScheme } from "../utils/hooks/useColorScheme";
 import { useDarkMode } from "../utils/hooks/useDarkMode";
 import { motion } from "framer-motion";

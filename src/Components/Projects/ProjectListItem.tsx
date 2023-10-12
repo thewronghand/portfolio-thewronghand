@@ -26,7 +26,7 @@ export default function ProjectListItem({
 
   return (
     <motion.li
-      className="w-full border-t-[1px] last:border-b-[1px] py-4 px-4 lg:py-5 relative"
+      className="w-full border-t-[1px] last:border-b-[1px] border-current py-4 px-4 lg:py-5 relative"
       variants={itemVariants}
     >
       <Link to={item.id}>

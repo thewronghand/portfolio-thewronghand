@@ -35,7 +35,7 @@ export default function Header() {
       }`}
     >
       <section className="w-40 flex justify-center items-center">
-        <section className="flex items-center">
+        <section className="flex items-center ml-5">
           <Link to="/">
             <Logo width="30" height="30" />
           </Link>

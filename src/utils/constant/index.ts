@@ -75,4 +75,21 @@ export const COLOR_SCHEMES = {
       ACCENT: "#ffb3b3",
     },
   },
+  PETRAROSA: {
+    TITLE: "Petra Rosa",
+    DARK: {
+      BG: "#483937",
+      TEXT: "#f4e5e2",
+      PRIMARY: "#ea6f61",
+      SECONDARY: "#e9b1a5",
+      ACCENT: "#5e96f2",
+    },
+    LIGHT: {
+      BG: "#f9edea",
+      TEXT: "#51302c",
+      PRIMARY: "#bc4639",
+      SECONDARY: "#d3a49a",
+      ACCENT: "#4286f5",
+    },
+  },
 };

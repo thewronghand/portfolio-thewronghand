@@ -8,6 +8,7 @@ import Logo from "../Main/Logo";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useColorScheme } from "../../utils/hooks/useColorScheme";
+import ColorButton from "./ColorButton";
 
 export default function Header() {
   const location = useLocation();
@@ -40,7 +41,8 @@ export default function Header() {
           </Link>
         </section>
       </section>
-      <section className="flex w-32 justify-around items-center p-5">
+      <section className="flex w-44 justify-around items-center p-5">
+        <ColorButton />
         <DarkModeButton />
         <NavButton
           toggle={() => handleMenuClick()}

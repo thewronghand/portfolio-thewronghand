@@ -2,27 +2,27 @@ import { motion } from "framer-motion";
 import BlogIntro from "../Components/Blog/BlogIntro";
 import { useDarkMode } from "../utils/hooks/useDarkMode";
 import { useEffect } from "react";
-import { COLORS } from "../utils/constant";
+import { useColorScheme } from "../utils/hooks/useColorScheme";
 
 export default function Blog() {
   const darkMode = useDarkMode();
+  const colorScheme = useColorScheme();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
     <main
-      className={`min-h-screen pt-20 flex flex-col justify-center items-center transition-all duration-300 ease-in-out ${
-        darkMode
-          ? `${COLORS.DARK_MODE_BG} ${COLORS.DARK_MODE_TEXT}`
-          : `${COLORS.LIGHT_MODE_BG} ${COLORS.LIGHT_MODE_TEXT}`
-      }`}
+      style={{
+        color: darkMode ? colorScheme.DARK.TEXT : colorScheme.LIGHT.TEXT,
+        background: darkMode ? colorScheme.DARK.BG : colorScheme.LIGHT.BG,
+      }}
+      className={`min-h-screen pt-20 flex flex-col justify-center items-center transition-all duration-300 ease-in-out`}
     >
       <BlogIntro />
       <motion.div
-        className={`flex justify-center m-10 w-full h-[1000px] md:h-[650px] ${
-          darkMode ? "bg-gray-500" : "bg-gray-100"
-        }`}
+        style={{ background: colorScheme.LIGHT.BG }}
+        className={`flex justify-center m-10 w-full h-[1000px] md:h-[650px]`}
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6, duration: 0.5 }}

@@ -1,4 +1,4 @@
-import { useDarkMode } from "./hooks/useDarkMode";
+import { useColorScheme } from "./hooks/useColorScheme";
 
 interface AnchorProp {
   children: string;
@@ -6,17 +6,15 @@ interface AnchorProp {
 }
 
 export default function Anchor({ children, href }: AnchorProp) {
-  const darkMode = useDarkMode();
+  const colorScheme = useColorScheme();
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={
-        darkMode
-          ? "text-purple-300 hover:text-purple-200"
-          : "text-purple-400 hover:text-purple-500"
-      }
+      style={{
+        color: colorScheme.LIGHT.PRIMARY,
+      }}
     >
       {children}
     </a>

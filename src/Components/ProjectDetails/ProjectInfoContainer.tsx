@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import { Project } from "../../types";
 import { useColorScheme } from "../../utils/hooks/useColorScheme";
+import { useDarkMode } from "../../utils/hooks/useDarkMode";
 
 export default function ProjectInfoContainer({
   data,
 }: ProjectInfoContainerProps) {
   const colorScheme = useColorScheme();
+  const darkMode = useDarkMode();
 
   return (
     <section className="">
@@ -19,7 +21,11 @@ export default function ProjectInfoContainer({
       <ul className="flex flex-wrap content-start mb-2">
         {data.stacks.map((item) => (
           <li
-            style={{ background: colorScheme.LIGHT.PRIMARY }}
+            style={{
+              background: darkMode
+                ? colorScheme.DARK.PRIMARY
+                : colorScheme.LIGHT.PRIMARY,
+            }}
             className={`mt-2 text-white py-1 px-3 mr-1 rounded-2xl cursor-default`}
           >
             {item}
@@ -49,7 +55,11 @@ export default function ProjectInfoContainer({
         <span className="cursor-default mr-2 text-lg">Links</span>
         <ul className="flex px-2">
           <li
-            style={{ background: colorScheme.LIGHT.ACCENT }}
+            style={{
+              background: darkMode
+                ? colorScheme.DARK.ACCENT
+                : colorScheme.LIGHT.ACCENT,
+            }}
             className="px-3 py-1 rounded-2xl text-white hover:bg-blue-200 transition-all duration-300 ease-in-out mr-1"
           >
             <a href={data.deployUrl} target="_blank" rel="noopener noreferrer">
@@ -57,7 +67,11 @@ export default function ProjectInfoContainer({
             </a>
           </li>
           <li
-            style={{ background: colorScheme.LIGHT.SECONDARY }}
+            style={{
+              background: darkMode
+                ? colorScheme.DARK.SECONDARY
+                : colorScheme.LIGHT.SECONDARY,
+            }}
             className="px-3 py-1 rounded-2xl text-white hover:bg-blue-200 transition-all duration-300 ease-in-out"
           >
             <a href={data.gitHubUrl} target="_blank" rel="noopener noreferrer">

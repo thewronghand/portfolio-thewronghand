@@ -7,7 +7,7 @@ function ListItem({ title, children, isMisc = false }: ListItemProps) {
   if (!isMisc)
     return (
       <li className="flex items-center mx-2">
-        <section className="mr-2 text-3xl py-4 pr-2 border-r-2 border-r-current cursor-default min-w-[98px]">
+        <section className="mr-2 text-3xl py-4 pr-2 border-r-2 border-r-current cursor-default min-w-[102px]">
           {title}
         </section>
         <section className="text-xl min-w-[206px]">
@@ -45,7 +45,7 @@ function ListItem({ title, children, isMisc = false }: ListItemProps) {
     );
   return (
     <li className="flex items-center mx-2">
-      <section className="mr-2 text-3xl py-4 pr-2 border-r-2 border-r-current cursor-default min-w-[98px]">
+      <section className="mr-2 text-3xl py-4 pr-2 border-r-2 border-r-current cursor-default min-w-[102px]">
         {title}
       </section>
       <section className="text-xl min-w-[206px]">{children}</section>

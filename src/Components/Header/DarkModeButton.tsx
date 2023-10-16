@@ -9,7 +9,7 @@ export default function DarkModeButton() {
   const darkMode = useDarkMode();
 
   return (
-    <button onClick={() => dispatch(toggleDarkMode())} className="mt-[2px]">
+    <button onClick={() => dispatch(toggleDarkMode())}>
       {darkMode ? <SunIcon /> : <MoonIcon />}
     </button>
   );

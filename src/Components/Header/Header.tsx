@@ -9,6 +9,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useColorScheme } from "../../utils/hooks/useColorScheme";
 import ColorButton from "./ColorButton";
+import { headerStyle } from "./headerComponents.css";
 
 export default function Header() {
   const location = useLocation();
@@ -30,18 +31,16 @@ export default function Header() {
       style={{
         color: darkMode ? colorScheme.DARK.TEXT : colorScheme.LIGHT.TEXT,
       }}
-      className={`fixed top-0 left-0 flex justify-between items-center w-full h-16 p-15 z-10 ${
-        isSpecialPage && "mix-blend-difference"
+      className={`${headerStyle.container} ${
+        isSpecialPage && headerStyle.mixBlend
       }`}
     >
-      <section className="w-40 flex justify-center items-center">
-        <section className="flex items-center ml-5">
-          <Link to="/">
-            <Logo width="30" height="30" />
-          </Link>
-        </section>
+      <section className={headerStyle.logoContainer}>
+        <Link to="/">
+          <Logo width="30" height="30" />
+        </Link>
       </section>
-      <section className="flex w-44 justify-around items-center p-5">
+      <section className={headerStyle.buttonContainer}>
         <ColorButton />
         <DarkModeButton />
         <NavButton

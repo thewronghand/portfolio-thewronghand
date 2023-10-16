@@ -99,7 +99,7 @@ export default function Logo({
         />
       </svg>
       <section
-        className={`${logoStyle.logoText} ${
+        className={`${logoStyle.logoTextStatic} ${
           vertical && logoStyle.logoTextVertical
         }`}
       >

@@ -16,6 +16,10 @@ export const logoStyle = {
     fontFamily: youngSerifFont,
     cursor: "default",
   }),
+  logoTextStatic: style({
+    fontFamily: youngSerifFont,
+    cursor: "pointer",
+  }),
   logoTextVertical: style({
     fontSize: "1.875rem",
     lineHeight: "2.25rem",

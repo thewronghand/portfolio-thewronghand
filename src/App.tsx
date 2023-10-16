@@ -1,7 +1,5 @@
 import "./index.css";
 import { Route, Routes } from "react-router-dom";
-import { useGrain } from "./utils/hooks/useGrain";
-import { useDarkMode } from "./utils/hooks/useDarkMode";
 
 import Main from "./Pages/Main";
 import About from "./Pages/About";
@@ -14,19 +12,15 @@ import { RootState } from "./redux/store";
 import ProjectDetails from "./Pages/ProjectDetails";
 import Blog from "./Pages/Blog";
 import AppSettingsWrapper from "./utils/AppSettingsWrapper";
+import DarkModeGrainCanvas from "./Components/Global/DarkModeGrainCanvas";
 
 function App() {
-  const darkMode = useDarkMode();
-  const canvasRef = useGrain(darkMode);
   const isOpen = useSelector((state: RootState) => state.menu.isOpen);
 
   return (
     <div className="w-full h-full">
       <AppSettingsWrapper>
-        <canvas
-          ref={canvasRef}
-          className="fixed top-0 left-0 w-screen h-screen z-50 opacity-5 pointer-events-none"
-        />
+        <DarkModeGrainCanvas />
 
         <AnimatePresence>{isOpen && <Nav key="nav" />}</AnimatePresence>
 

@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { moricFont, youngSerifFont } from "../../styles/fonts.css";
-import * as mediaQueries from "../../styles/mediaQueries";
+import { mediaQueries } from "../../styles/mediaQueries";
 
 export const headerStyle = {
   container: style({

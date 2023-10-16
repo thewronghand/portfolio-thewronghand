@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Contact, ContactMisc, ContactMiscData } from "../../../types";
 import { motion } from "framer-motion";
-import { contactsItemStyle, listItemStyle } from "./Contacts.css";
+import { contactsItemStyle, listItemStyle } from "./contactsComponents.css";
 
 function ListItem({ title, children, isMisc = false }: ListItemProps) {
   const [isHovered, setHovered] = useState(false);

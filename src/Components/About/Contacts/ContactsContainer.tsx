@@ -1,6 +1,6 @@
 import { ContactMisc, Contact, ContactSet } from "../../../types";
 import ContactsItem from "./ContactsItem";
-import { contactsContainerStyle as style } from "./Contacts.css";
+import { contactsContainerStyle as style } from "./contactsComponents.css";
 
 interface ContactContainerProps {
   data: ContactSet;

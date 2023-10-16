@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDarkMode } from "../../utils/hooks/useDarkMode";
 import { useGrain } from "../../utils/hooks/useGrain";
+import { grainCanvas } from "./GlobalComponents.css";
 
 export default function DarkModeGrainCanvas() {
   const darkMode = useDarkMode();
@@ -12,10 +13,5 @@ export default function DarkModeGrainCanvas() {
     }
   }, [darkMode, canvasRef]);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      className="fixed top-0 left-0 w-screen h-screen opacity-5 z-50 pointer-events-none"
-    />
-  );
+  return <canvas ref={canvasRef} className={grainCanvas} />;
 }

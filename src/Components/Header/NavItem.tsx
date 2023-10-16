@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../../redux/slices/menuSlice";
+import { navItemStyle } from "./headerComponents.css";
 
 interface NavItemProps {
   number: string;
@@ -16,17 +17,11 @@ export default function NavItem({ number, path, title }: NavItemProps) {
     dispatch(toggleMenu());
   };
   return (
-    <motion.div variants={itemVariants} className="flex items-center">
-      <div className="mr-4 text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg h-full cursor-default mt-6 md:mt-10 xl:mt-12">
-        {number}
-      </div>
-      <Link
-        to={path}
-        onClick={handleItemClick}
-        className="text-[60px] sm:text-[80px] md:text-[90px] lg:[100px] relative group"
-      >
-        {title}
-        <div className="absolute bottom-0 left-0 h-[2px] bg-current w-0 group-hover:w-full transition-all duration-300"></div>
+    <motion.div variants={itemVariants} className={navItemStyle.container}>
+      <div className={navItemStyle.number}>{number}</div>
+      <Link to={path} onClick={handleItemClick} className={navItemStyle.link}>
+        <span className={navItemStyle.shadowTitle}>{title}</span>
+        <span className={navItemStyle.title}>{title}</span>
       </Link>
     </motion.div>
   );

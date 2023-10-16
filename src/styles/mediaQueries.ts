@@ -1,0 +1,9 @@
+export const SCREEN_SM = "screen and (min-width: 640px)";
+export const SCREEN_MD = "screen and (min-width: 768px)";
+export const SCREEN_LG = "screen and (min-width: 1024px)";
+export const SCREEN_XL = "screen and (min-width: 1280px)";
+export const SCREEN_2XL = "screen and (min-width: 1530px)";
+export const SCREEN_3XL = "screen and (min-width: 1536px)";
+export const SCREEN_4XL = "screen and (min-width: 1850px)";
+export const SCREEN_5XL = "screen and (min-width: 2000px)";
+export const SCREEN_6XL = "screen and (min-width: 2300px)";

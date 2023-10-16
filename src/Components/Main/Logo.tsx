@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import AnimatedText from "../../utils/AnimatedText";
 import { useColorScheme } from "../../utils/hooks/useColorScheme";
+import { logoStyle } from "./MainComponents.css";
 
 interface LogoProps {
   width: string;
@@ -19,11 +20,12 @@ export default function Logo({
 }: LogoProps) {
   const colorScheme = useColorScheme();
   const directionStyle = `${
-    vertical ? "flex flex-col items-center" : "flex flex-row items-center"
+    vertical ? logoStyle.vertical : logoStyle.horizontal
   }`;
+
   if (animated) {
     return (
-      <section className={`${directionStyle}`}>
+      <section className={directionStyle}>
         <svg
           width={width}
           height={height}
@@ -58,7 +60,9 @@ export default function Logo({
           />
         </svg>
         <section
-          className={`cursor-default ${vertical ? "text-3xl mt-3" : ""}`}
+          className={`${logoStyle.logoText} ${
+            vertical && logoStyle.logoTextVertical
+          }`}
         >
           <AnimatedText text="thewronghand" />
         </section>
@@ -95,7 +99,9 @@ export default function Logo({
         />
       </svg>
       <section
-        className={` ${vertical ? "text-3xl mt-3" : "ml-1"} font-young-serif`}
+        className={`${logoStyle.logoText} ${
+          vertical && logoStyle.logoTextVertical
+        }`}
       >
         thewronghand
       </section>

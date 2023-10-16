@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDarkMode } from "../../utils/hooks/useDarkMode";
 import { useGrain } from "../../utils/hooks/useGrain";
-import { grainCanvas } from "./GlobalComponents.css";
+import { grainCanvas } from "./globalComponents.css";
 
 export default function DarkModeGrainCanvas() {
   const darkMode = useDarkMode();

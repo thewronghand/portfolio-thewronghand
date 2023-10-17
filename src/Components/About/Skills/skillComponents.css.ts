@@ -82,12 +82,55 @@ export const skillListStyle = {
     ],
     transitionDuration: "300ms",
     cursor: "pointer",
-    ":hover": { backgroundColor: "#DBEAFE" },
+    ":hover": { backgroundColor: "#AFD3FF" },
   }),
   itemSelected: style({
     color: "#ffffff",
     backgroundColor: "#60A5FA",
     cursor: "default",
     ":hover": { backgroundColor: "#60A5FA", cursor: "default" },
+  }),
+};
+
+export const mobileSkillListStyle = {
+  container: style({
+    display: "flex",
+    padding: "0.5rem",
+    marginLeft: "1rem",
+    marginRight: "1rem",
+    flexDirection: "row",
+    borderRadius: "0.75rem",
+    boxShadow:
+      "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+    "@media": {
+      [mediaQueries.SCREEN_SM]: { display: "none" },
+      [mediaQueries.SCREEN_2XL]: { display: "inline-flex" },
+      [mediaQueries.SCREEN_5XL]: { display: "none" },
+    },
+  }),
+  skillSetList: style({
+    marginRight: "0.5rem",
+    width: "50%",
+    listStyle: "none",
+  }),
+  skillSetItem: style({
+    paddingLeft: "0.5rem",
+    paddingRight: "0.5rem",
+    borderRadius: "0.5rem",
+    transitionProperty: "all",
+    transitionTimingFunction: [
+      "cubic-bezier(0.4, 0, 0.2, 1)",
+      "cubic-bezier(0.4, 0, 0.2, 1)",
+    ],
+    transitionDuration: ["300ms", "300ms"],
+    cursor: "pointer",
+    padding: "2px",
+    margin: "1px",
+    ":hover": { backgroundColor: "#93C5FD" },
+  }),
+  skillSetItemSelected: style({
+    backgroundColor: "#60A5FA",
+    cursor: "default",
+    ":hover": { backgroundColor: "#60A5FA" },
   }),
 };

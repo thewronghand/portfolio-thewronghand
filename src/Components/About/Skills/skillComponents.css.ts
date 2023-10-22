@@ -154,9 +154,12 @@ export const mobileSkillListStyle = {
     boxShadow:
       "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
     margin: "1px",
-    ":hover": {},
+    ":hover": {
+      filter: "brightness(1.1)",
+    },
   }),
   skillItemSelected: style({
+    filter: "brightness(1.15)",
     ":hover": {
       cursor: "default",
     },

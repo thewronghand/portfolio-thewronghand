@@ -32,7 +32,7 @@ export default function Header() {
         color: darkMode ? colorScheme.DARK.TEXT : colorScheme.LIGHT.TEXT,
       }}
       className={`${headerStyle.container} ${
-        isSpecialPage && headerStyle.mixBlend
+        isSpecialPage && !isOpen && headerStyle.mixBlend
       }`}
     >
       <section className={headerStyle.logoContainer}>

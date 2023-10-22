@@ -14,8 +14,8 @@ export default function Background({ children }: BackgroundProps) {
       style={{
         color: darkMode ? colorScheme.DARK.TEXT : colorScheme.LIGHT.TEXT,
         background: darkMode ? colorScheme.DARK.BG : colorScheme.LIGHT.BG,
-        width: "100vw",
-        height: "100vh",
+        width: "100%",
+        height: "100%",
       }}
     >
       {children}

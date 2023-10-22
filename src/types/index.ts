@@ -25,14 +25,21 @@ export interface Project {
   id: string;
   title: string;
   thumbnailBgColor: string;
+  secondaryColor: string;
   thumbnailLogo: string;
   type: string;
   imgs: Array<string>;
   stacks: Array<string>;
   description: string;
-  docsUrls: DocUrl[];
+  docsUrls?: DocUrl[];
   deployUrl: string;
   gitHubUrl: string;
+  nextProject: NextProject;
+}
+
+interface NextProject {
+  title: string;
+  path: string;
 }
 
 export interface Profile {
@@ -61,4 +68,8 @@ export interface ContactMiscData {
 
 export interface ContactSet {
   data: (Contact | ContactMisc)[];
+}
+
+export interface ProjectListImgSectionProps {
+  hoveredItem: Project | null;
 }

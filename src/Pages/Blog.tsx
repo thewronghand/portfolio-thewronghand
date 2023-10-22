@@ -1,19 +1,33 @@
+import { motion } from "framer-motion";
 import BlogIntro from "../Components/Blog/BlogIntro";
-import { useDarkMode } from "../utils/hooks/useDarkMode";
+import { useEffect } from "react";
+import { useColorScheme } from "../utils/hooks/useColorScheme";
+import { blogStyle as style } from "./pages.css";
+import Background from "../Components/Global/Background";
 
 export default function Blog() {
-  const darkMode = useDarkMode();
+  const colorScheme = useColorScheme();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
-    <main
-      className={`w-screen h-screen flex flex-col justify-center items-center transition-all duration-300 ease-in-out ${
-        darkMode ? "text-white bg-slate-500" : "text-gray-700"
-      }`}
-    >
-      <BlogIntro />
-      <iframe
-        src="https://www.naver.com"
-        className="m-10 w-full h-3/5"
-      ></iframe>
-    </main>
+    <Background>
+      <main className={style.container}>
+        <BlogIntro />
+        <motion.div
+          style={{ background: colorScheme.LIGHT.BG }}
+          className={style.iframeSection}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+        >
+          <iframe
+            src="https://vitriol-345e3.web.app/"
+            className={style.iframe}
+          ></iframe>
+        </motion.div>
+      </main>
+    </Background>
   );
 }

@@ -6,6 +6,10 @@ import { RootState } from "../../redux/store";
 import NavButton from "./NavButton";
 import Logo from "../Main/Logo";
 import { Link, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useColorScheme } from "../../utils/hooks/useColorScheme";
+import ColorButton from "./ColorButton";
+import { headerStyle } from "./headerComponents.css";
 
 export default function Header() {
   const location = useLocation();
@@ -14,26 +18,30 @@ export default function Header() {
   const dispatch = useDispatch();
   const darkMode = useDarkMode();
   const isOpen = useSelector((state: RootState) => state.menu.isOpen);
+  const colorScheme = useColorScheme();
 
   const handleMenuClick = () => {
     dispatch(toggleMenu());
   };
   return (
-    <section
-      className={`${
-        darkMode ? "text-white" : "text-gray-700"
-      } fixed top-0 left-0 flex justify-between items-center w-full h-16 p-15 z-10 ${
-        isSpecialPage && "mix-blend-difference"
+    <motion.section
+      variants={headerVariants}
+      initial="hidden"
+      animate="visible"
+      style={{
+        color: darkMode ? colorScheme.DARK.TEXT : colorScheme.LIGHT.TEXT,
+      }}
+      className={`${headerStyle.container} ${
+        isSpecialPage && !isOpen && headerStyle.mixBlend
       }`}
     >
-      <section className="w-40 flex justify-center items-center">
-        <section className="flex items-center">
-          <Link to="/">
-            <Logo width="30" height="30" />
-          </Link>
-        </section>
+      <section className={headerStyle.logoContainer}>
+        <Link to="/">
+          <Logo width="30" height="30" />
+        </Link>
       </section>
-      <section className="flex w-32 justify-around items-center p-5">
+      <section className={headerStyle.buttonContainer}>
+        <ColorButton />
         <DarkModeButton />
         <NavButton
           toggle={() => handleMenuClick()}
@@ -41,6 +49,23 @@ export default function Header() {
           darkMode={darkMode}
         />
       </section>
-    </section>
+    </motion.section>
   );
 }
+
+const headerVariants = {
+  hidden: {
+    opacity: 0,
+    y: -15,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      type: "spring",
+      damping: 8,
+      stiffness: 100,
+    },
+  },
+};

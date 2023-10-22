@@ -1,5 +1,6 @@
 import { Skill } from "../../../types";
 import { motion } from "framer-motion";
+import { skillCardStyle as style } from "./skillComponents.css";
 
 interface SkillCardProps {
   skill: Skill;
@@ -9,24 +10,25 @@ interface SkillCardProps {
 export default function SkillCard({ skill, isSelected }: SkillCardProps) {
   return (
     <motion.li
-      className={`mt-10 last:shadow-xl text-gray-700 bg-white flex flex-col max-w-[320px] min-w-[320px] h-[512px] rounded-xl overflow-hidden ${
-        isSelected && "shadow-xl"
-      }`}
+      className={style.container}
       variants={containerVariants}
       initial="hidden"
       animate={isSelected ? "show" : "exit"}
     >
-      <section style={{ background: `${skill.bgColorCode}` }} className="h-2/3">
+      <section
+        style={{ background: `${skill.bgColorCode}` }}
+        className={style.imgSection}
+      >
         <motion.img
           src={skill.imgUrl}
           alt={skill.title}
-          className="w-full pointer-events-none"
+          className={style.img}
           variants={imageVariants}
         />
       </section>
-      <section className="p-2 mt-2 h-1/3">
-        <section className="pl-2 font-bold">{skill.title}</section>
-        <ul className=" list-disc p-3 pl-10 h-32 overflow-y-auto">
+      <section className={style.descriptionSection}>
+        <section className={style.title}>{skill.title}</section>
+        <ul className={style.list}>
           {skill.description.map((item, index) => (
             <li key={index}>{item}</li>
           ))}
@@ -48,7 +50,7 @@ const containerVariants = {
       stiffness: 100,
     },
   },
-  exit: { x: "-160%" },
+  exit: { opacity: 0 },
 };
 
 const imageVariants = {

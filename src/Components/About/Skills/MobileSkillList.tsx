@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Skill, SkillListProps, SkillSet } from "../../../types";
+import { mobileSkillListStyle as style } from "./skillComponents.css";
 
 export default function MobileSkillList({
   data,
@@ -21,8 +22,8 @@ export default function MobileSkillList({
   };
 
   return (
-    <section className="flex flex-row sm:hidden 2xl:inline-flex 5xl:hidden">
-      <ul className="w-1/2">
+    <section className={style.container}>
+      <ul className={style.skillSetList}>
         {data.map((skillSet: SkillSet) => (
           <li
             key={skillSet.title}
@@ -32,27 +33,27 @@ export default function MobileSkillList({
             className={`${
               selectedCategory &&
               selectedCategory.title === skillSet.title &&
-              "text-white bg-blue-300 cursor-default  hover:bg-blue-300 hover:cursor-default"
-            } 
-            cursor-pointer p-[1px] m-[1px]
-            `}
+              style.skillSetItemSelected
+            }  ${style.skillSetItem}`}
           >
             {skillSet.title}
           </li>
         ))}
       </ul>
-      <ul className="w-1/2">
+      <ul className={style.skillItemList}>
         {selectedCategory?.data.map((skill: Skill) => (
           <li
             key={skill.title}
             onClick={() => {
               onItemClick(skill);
             }}
-            className={`${
+            style={{ background: skill.bgColorCode }}
+            className={`${style.skillItem} ${
               selectedSkill &&
               selectedSkill.title === skill.title &&
-              "text-white bg-blue-300 cursor-default  hover:bg-blue-300 hover:cursor-default"
-            } cursor-pointer p-[1px] m-[1px]`}
+              style.skillItemSelected
+            }
+            `}
           >
             {skill.title}
           </li>

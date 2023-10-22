@@ -4,6 +4,7 @@ import SkillCard from "./SkillCard";
 import { Skill, SkillSet } from "../../../types";
 import { AnimatePresence } from "framer-motion";
 import MobileSkillList from "./MobileSkillList";
+import { skillContainerStyle as style } from "./skillComponents.css";
 
 interface SkillContainerProps {
   data: SkillSet[];
@@ -19,17 +20,15 @@ export default function SkillContainer({ data }: SkillContainerProps) {
   }, [data]);
 
   return (
-    <section className="flex flex-col items-center">
-      <section className="text-5xl w-full mb-10 border-b-2 pb-5 cursor-default">
-        Skills
-      </section>
-      <section className="w-full flex flex-col sm:flex-row 2xl:flex-col 5xl:flex-row">
+    <section className={style.container}>
+      <section className={style.title}>Skills</section>
+      <section className={style.cardAndListSection}>
         <MobileSkillList
           data={data}
           onItemClick={(skill: Skill) => setSelectedSkill(skill)}
           selectedSkill={selectedSkill}
         />
-        <section className="w-full min-w-[325px] flex justify-center">
+        <section className={style.cardSection}>
           <AnimatePresence>
             {selectedSkill && (
               <SkillCard
@@ -40,7 +39,7 @@ export default function SkillContainer({ data }: SkillContainerProps) {
             )}
           </AnimatePresence>
         </section>
-        <section className="w-full flex justify-center mt-10">
+        <section className={style.desktopSkillListSection}>
           <SkillList
             data={data}
             onItemClick={(skill: Skill) => setSelectedSkill(skill)}

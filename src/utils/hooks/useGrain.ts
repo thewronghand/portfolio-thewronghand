@@ -3,13 +3,12 @@ import { useEffect, useRef } from "react";
 const createNoise = (
   ctx: CanvasRenderingContext2D,
   wWidth: number,
-  wHeight: number,
-  darkMode: boolean
+  wHeight: number
 ): ImageData => {
   const iData = ctx.createImageData(wWidth, wHeight);
   const buffer32 = new Uint32Array(iData.data.buffer);
   const len = buffer32.length;
-  const color = darkMode ? 0xffffffff : 0xff000000; // 흰색 또는 검은색
+  const color = 0xff000000;
 
   for (let i = 0; i < len; i++) {
     if (Math.random() < 0.1) {
@@ -20,7 +19,7 @@ const createNoise = (
   return iData;
 };
 
-export const useGrain = (darkMode: boolean) => {
+export const useGrain = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
     const canvas = canvasRef.current!;
@@ -53,7 +52,7 @@ export const useGrain = (darkMode: boolean) => {
 
       noiseData = [];
       for (let i = 0; i < 10; i++) {
-        noiseData.push(createNoise(ctx, wWidth, wHeight, darkMode));
+        noiseData.push(createNoise(ctx, wWidth, wHeight));
       }
 
       clearTimeout(loopTimeout);
@@ -72,7 +71,7 @@ export const useGrain = (darkMode: boolean) => {
       window.removeEventListener("resize", handleResize);
       clearTimeout(loopTimeout);
     };
-  }, [darkMode]);
+  }, []);
 
   return canvasRef;
 };

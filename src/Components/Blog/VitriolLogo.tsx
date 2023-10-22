@@ -1,18 +1,83 @@
+import { motion } from "framer-motion";
+import { useColorScheme } from "../../utils/hooks/useColorScheme";
+
 export default function VitriolLogo() {
+  const colorScheme = useColorScheme();
   return (
-    <svg
+    <motion.svg
       width="50"
       height="50"
-      viewBox="0 0 793 793"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      animate={{ rotate: 360 }}
+      stroke={colorScheme.LIGHT.ACCENT}
+      transition={{
+        delay: 1.35,
+        duration: 2,
+        ease: "linear",
+        repeat: Infinity,
+      }}
     >
-      <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M793 396.5C793 615.481 615.481 793 396.5 793C177.519 793 0 615.481 0 396.5C0 177.519 177.519 0 396.5 0C615.481 0 793 177.519 793 396.5ZM342.375 680.073V113.287C208.863 138.547 107.891 255.822 107.891 396.68C107.891 537.538 208.863 654.812 342.375 680.073ZM679.713 450.625C657.759 566.662 566.302 658.119 450.266 680.073V450.625H679.713ZM679.713 342.734H450.266V113.287C566.302 135.241 657.759 226.698 679.713 342.734Z"
-        fill="currentcolor"
-      />
-    </svg>
+      <motion.g variants={containerVariants} initial="hidden" animate="visible">
+        <motion.path
+          d="M 25 5 A 20 20 0 0 1 25 45 A 20 20 0 0 1 25 5"
+          fill="none"
+          strokeWidth="7"
+          variants={circleVariant}
+        />
+        <motion.line
+          x1="25"
+          y1="5"
+          x2="25"
+          y2="45"
+          strokeWidth="7"
+          variants={verticalLineVariant}
+        />
+        <motion.line
+          x1="25"
+          y1="25"
+          x2="45"
+          y2="25"
+          strokeWidth="7"
+          variants={horizontalLineVariant}
+        />
+      </motion.g>
+    </motion.svg>
   );
 }
+
+const circleVariant = {
+  hidden: {
+    pathLength: 0,
+    strokeLinecap: "butt" as const,
+    strokeDashoffset: 0.5,
+    strokeDasharray: 2,
+  },
+  visible: {
+    pathLength: 1,
+    strokeLinecap: "round" as const,
+    strokeDashoffset: 0,
+    transition: { duration: 0.9 },
+  },
+};
+
+const verticalLineVariant = {
+  hidden: { pathLength: 0, strokeLinecap: "butt" as const },
+  visible: {
+    pathLength: 1,
+    strokeLinecap: "round" as const,
+    transition: { delay: 0.5, duration: 0.5 },
+  },
+};
+
+const horizontalLineVariant = {
+  hidden: { pathLength: 0, strokeLinecap: "butt" as const },
+  visible: {
+    pathLength: 1,
+    strokeLinecap: "round" as const,
+    transition: { delay: 0.8, duration: 0.5 },
+  },
+};
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 1 } },
+};

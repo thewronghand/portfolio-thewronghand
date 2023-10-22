@@ -1,14 +1,21 @@
 import VitriolLogo from "./VitriolLogo";
 import Anchor from "../../utils/Anchor";
+import { motion } from "framer-motion";
+import { blogIntroStyle as style } from "./blogComponents.css";
 
 export default function BlogIntro() {
   return (
-    <section className="mx-16">
-      <section className="text-6xl flex items-center">
+    <motion.section
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+      className={style.container}
+    >
+      <motion.section variants={itemVariants} className={style.titleSection}>
         <VitriolLogo />
-        <span className="ml-1 cursor-default">Vitriol</span>
-      </section>
-      <p className="mt-6">
+        <span className={style.title}>Vitriol</span>
+      </motion.section>
+      <motion.p variants={itemVariants} className={style.description}>
         Vitriol은 <Anchor href="https://obsidian.md/">Obsidian</Anchor>의
         Digital Garden 플러그인을 기반으로 한 개인 블로그입니다. 그래프와 관련된
         UI 상호작용을 원활히 관리하기 위해 React로 구성하였습니다.
@@ -31,7 +38,53 @@ export default function BlogIntro() {
           더 많은 옵시디언 고유 문법
         </Anchor>
         을 추가할 예정입니다.
-      </p>
-    </section>
+        <br />
+        아래의 화면에서, 여러분은 제가 무엇을 공부했고 무엇을 알고 있는지, 어떤
+        인사이트를 가지고 있는지 확인하실 수 있습니다.
+      </motion.p>
+    </motion.section>
   );
 }
+
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+    y: -10,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -10,
+    transition: {
+      staggerChildren: 0.1,
+      staggerDirection: -1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: {
+    opacity: 0,
+    y: -10,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -10,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};

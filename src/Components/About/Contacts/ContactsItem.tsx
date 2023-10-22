@@ -1,4 +1,96 @@
+import { useState } from "react";
 import { Contact, ContactMisc, ContactMiscData } from "../../../types";
+import { motion } from "framer-motion";
+import { contactsItemStyle, listItemStyle } from "./contactsComponents.css";
+
+function ListItem({ title, children, isMisc = false }: ListItemProps) {
+  const [isHovered, setHovered] = useState(false);
+  if (!isMisc)
+    return (
+      <li className={listItemStyle.container}>
+        <section className={listItemStyle.title}>{title}</section>
+        <section className={listItemStyle.itemSection}>
+          <motion.div
+            initial="hidden"
+            animate={isHovered ? "visible" : "hidden"}
+            variants={textVariants}
+            transition={{
+              type: "spring",
+              stiffness: 700,
+              damping: 30,
+            }}
+            className={listItemStyle.motionDiv}
+          >
+            <motion.span
+              variants={arrowVariants}
+              className={listItemStyle.arrow}
+            >
+              ➔
+            </motion.span>
+            <span
+              className={listItemStyle.text}
+              onMouseOver={() => {
+                setHovered(true);
+              }}
+              onMouseOut={() => {
+                setHovered(false);
+              }}
+            >
+              {children}
+            </span>
+          </motion.div>
+        </section>
+      </li>
+    );
+  return (
+    <li className={listItemStyle.misc.container}>
+      <section className={listItemStyle.misc.title}>{title}</section>
+      <section className={listItemStyle.misc.itemSection}>{children}</section>
+    </li>
+  );
+}
+
+export default function ContactsItem({ contact }: ContactsItemProps) {
+  if (isContact(contact)) {
+    let content;
+    switch (contact.type) {
+      case CONTACT_TYPES.MAIL:
+        content = <a href={`mailto:${contact.data}`}>{contact.subtitle}</a>;
+        break;
+      case CONTACT_TYPES.TEL:
+        content = <a href={`tel:${contact.data}`}>{contact.subtitle}</a>;
+        break;
+      case CONTACT_TYPES.URL:
+        content = (
+          <a href={contact.data} target="_blank" rel="noopener noreferrer">
+            {contact.subtitle}
+          </a>
+        );
+        break;
+      default:
+        content = <section>{contact.subtitle}</section>;
+    }
+    return <ListItem title={contact.title}>{content}</ListItem>;
+  }
+
+  return (
+    <ListItem title={contact.title} isMisc={true}>
+      <ul className={contactsItemStyle.misc.list}>
+        {contact.data.map((item: ContactMiscData) => (
+          <li key={item.title} className={contactsItemStyle.misc.item}>
+            <a href={`${item.url}`} target="_blank" rel="noopener noreferrer">
+              <img
+                src={item.img}
+                alt={item.title}
+                className={contactsItemStyle.misc.img}
+              />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </ListItem>
+  );
+}
 
 interface ContactsItemProps {
   contact: Contact | ContactMisc;
@@ -17,79 +109,15 @@ const CONTACT_TYPES = {
 interface ListItemProps {
   title: string;
   children: React.ReactNode;
+  isMisc?: boolean;
 }
 
-function ListItem({ title, children }: ListItemProps) {
-  return (
-    <li className="flex items-center mx-2">
-      <section className="mr-2 text-3xl py-4 pr-2 border-r-2 cursor-default min-w-[98px]">
-        {title}
-      </section>
-      <section className="text-xl min-w-[206px]">{children}</section>
-    </li>
-  );
-}
+const arrowVariants = {
+  hidden: { opacity: 0, x: -5 },
+  visible: { opacity: 1, x: 0 },
+};
 
-export default function ContactsItem({ contact }: ContactsItemProps) {
-  if (isContact(contact)) {
-    let content;
-    switch (contact.type) {
-      case CONTACT_TYPES.MAIL:
-        content = (
-          <a
-            className="hover:text-blue-400 transition-all ease-in-out"
-            href={`mailto:${contact.data}`}
-          >
-            {contact.subtitle}
-          </a>
-        );
-        break;
-      case CONTACT_TYPES.TEL:
-        content = (
-          <a
-            className="hover:text-blue-400 transition-all ease-in-out"
-            href={`tel:${contact.data}`}
-          >
-            {contact.subtitle}
-          </a>
-        );
-        break;
-      case CONTACT_TYPES.URL:
-        content = (
-          <a
-            className="hover:text-blue-400 transition-all ease-in-out"
-            href={contact.data}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {contact.subtitle}
-          </a>
-        );
-        break;
-      default:
-        content = (
-          <section className="hover:text-blue-400 transition-all ease-in-out">
-            {contact.subtitle}
-          </section>
-        );
-    }
-    return <ListItem title={contact.title}>{content}</ListItem>;
-  }
-
-  return (
-    <ListItem title={contact.title}>
-      <ul className="flex">
-        {contact.data.map((item: ContactMiscData) => (
-          <li
-            key={item.title}
-            className="w-8 h-8 mx-[2px] hover:-translate-y-1 ease-in-out transition-all active:translate-y-0"
-          >
-            <a href={`${item.url}`} target="_blank" rel="noopener noreferrer">
-              <img src={item.img} alt={item.title} />
-            </a>
-          </li>
-        ))}
-      </ul>
-    </ListItem>
-  );
-}
+const textVariants = {
+  hidden: { x: 0 },
+  visible: { x: 20 },
+};

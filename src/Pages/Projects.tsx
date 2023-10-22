@@ -1,34 +1,22 @@
-import { Link } from "react-router-dom";
-import { useDarkMode } from "../utils/hooks/useDarkMode";
 import useFetchCollection from "../utils/hooks/useFetchCollection";
 import { Project } from "../types";
 import ProjectList from "../Components/Projects/ProjectList";
 import { useCacheProjectThumbnails } from "../utils/hooks/useCacheSkillImages";
+import Background from "../Components/Global/Background";
+import { projectsStyle as style } from "./pages.css";
 
 export default function Projects() {
-  const darkMode = useDarkMode();
   const { data, loading, error } = useFetchCollection<Project>("/projects");
   useCacheProjectThumbnails(data);
 
   return (
-    <div
-      className={`${
-        darkMode ? "text-white bg-slate-500" : "text-gray-700"
-      } transition-all duration-300 ease-in-out`}
-    >
-      <section className="w-screen h-screen flex flex-col justify-center items-center">
-        {loading && <div>Loading...</div>}
-        {error && <div>Error: {error.message}</div>}
-        {data && <ProjectList data={data} />}
-        <Link
-          to="/"
-          className={`${
-            darkMode ? "text-blue-300" : "text-blue-500"
-          } mt-10 inline-block`}
-        >
-          return to main
-        </Link>
-      </section>
+    <div className={style.container}>
+      <Background>
+        <section className={style.main}>
+          {error && <div>Error: {error.message}</div>}
+          {!loading && data && <ProjectList data={data} />}
+        </section>
+      </Background>
     </div>
   );
 }

@@ -1,25 +1,30 @@
 import { motion } from "framer-motion";
 import NavItem from "./NavItem";
 import { useDarkMode } from "../../utils/hooks/useDarkMode";
+import { useColorScheme } from "../../utils/hooks/useColorScheme";
+import { navStyle } from "./headerComponents.css";
 
 export default function Nav() {
   const darkMode = useDarkMode();
+  const colorScheme = useColorScheme();
 
   return (
     <motion.div
-      className={`${
-        darkMode ? "text-white bg-slate-500" : " text-gray-700 bg-white"
-      } flex justify-center items-center flex-col space-y-4  text-5xl w-screen h-screen z-10 fixed transition-all duration-300 ease-in-out`}
+      style={{
+        color: darkMode ? colorScheme.DARK.TEXT : colorScheme.LIGHT.TEXT,
+        background: darkMode ? colorScheme.DARK.BG : colorScheme.LIGHT.BG,
+      }}
+      className={navStyle.container}
       variants={containerVariants}
       initial="hidden"
       animate="visible"
       exit="exit"
     >
-      <div>
-        <NavItem number="01" path="/" title="Home" />
-        <NavItem number="02" path="/about" title="About" />
-        <NavItem number="03" path="/projects" title="Projects" />
-        <NavItem number="04" path="/blog" title="Vitriol" />
+      <div className={navStyle.list}>
+        <NavItem number="01" path="/" title="HoME" />
+        <NavItem number="02" path="/about" title="ABoUT" />
+        <NavItem number="03" path="/projects" title="PRoJECTS" />
+        <NavItem number="04" path="/blog" title="VITRIoL" />
       </div>
     </motion.div>
   );

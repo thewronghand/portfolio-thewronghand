@@ -121,3 +121,42 @@ export const projectsStyle = {
     height: "100%",
   }),
 };
+
+export const projectDetailsStyle = {
+  container: style({
+    paddingTop: "4rem",
+    height: "100%",
+    transitionProperty: "all",
+    transitionTimingFunction: [
+      "cubic-bezier(0.4, 0, 0.2, 1)",
+      "cubic-bezier(0.4, 0, 0.2, 1)",
+    ],
+    transitionDuration: ["300ms", "300ms"],
+  }),
+  main: style({
+    paddingLeft: "3.5rem",
+    paddingRight: "3.5rem",
+    "@media": {
+      [mediaQueries.SCREEN_MD]: { paddingLeft: "7rem", paddingRight: "7rem" },
+      [mediaQueries.SCREEN_LG]: { paddingLeft: "9rem", paddingRight: "9rem" },
+      [mediaQueries.SCREEN_XL]: { paddingLeft: "12rem", paddingRight: "12rem" },
+      [mediaQueries.SCREEN_2XL]: {
+        paddingLeft: "14rem",
+        paddingRight: "14rem",
+      },
+      [mediaQueries.SCREEN_3XL]: {
+        paddingLeft: "16rem",
+        paddingRight: "16rem",
+      },
+    },
+  }),
+  thumbnailSection: style({
+    minHeight: "400px",
+    "@media": {
+      [mediaQueries.SCREEN_MD]: {
+        minHeight: "360px",
+        marginTop: "-5rem",
+      },
+    },
+  }),
+};

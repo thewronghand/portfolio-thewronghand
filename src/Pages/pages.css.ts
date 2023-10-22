@@ -125,7 +125,9 @@ export const projectsStyle = {
 export const projectDetailsStyle = {
   container: style({
     paddingTop: "4rem",
+    width: "100%",
     height: "100%",
+    minHeight: "100vh",
     transitionProperty: "all",
     transitionTimingFunction: [
       "cubic-bezier(0.4, 0, 0.2, 1)",
@@ -163,8 +165,8 @@ export const projectDetailsStyle = {
 
 export const blogStyle = {
   container: style({
-    width: "100%",
-    height: "100%",
+    width: "100vw",
+    height: "100vh",
     paddingTop: "5rem",
     display: "flex",
     flexDirection: "column",
@@ -191,5 +193,6 @@ export const blogStyle = {
     width: "100%",
     maxWidth: "1000px",
     height: "100%",
+    border: "none",
   }),
 };

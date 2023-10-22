@@ -1,4 +1,5 @@
 import { Skill, SkillSet, SkillListProps } from "../../../types";
+import { skillListStyle as style } from "./skillComponents.css";
 
 export default function SkillList({
   data,
@@ -6,21 +7,19 @@ export default function SkillList({
   selectedSkill,
 }: SkillListProps) {
   return (
-    <ul className=" hidden sm:block 2xl:hidden 5xl:block md:mt-0 w-[320px] rounded-xl p-3 shadow-2xl 5xl:w-full">
+    <ul className={style.container}>
       {data.map((skillSet: SkillSet) => (
         <li key={skillSet.title}>
-          <section className="cursor-default m-2 text-lg">
-            {skillSet.title}
-          </section>
-          <ul className="flex flex-col">
+          <section className={style.skillSetTitle}>{skillSet.title}</section>
+          <ul className={style.list}>
             {skillSet.data.map((skill: Skill) => (
               <li
                 key={skill.title}
                 onClick={() => onItemClick(skill)}
-                className={`mx-1 cursor-pointer p-[1px]  px-2 rounded-md py-[1px] my-[2px] hover:bg-blue-100 active:bg-blue-200 first:shadow-first-shadow shadow-y-shadow transition-all ease-in-out ${
+                className={`${style.item} ${
                   selectedSkill && selectedSkill.title === skill.title
-                    ? `text-white bg-blue-400 cursor-default hover:bg-blue-400 active:bg-blue-400 hover:cursor-default`
-                    : ""
+                    ? style.itemSelected
+                    : undefined
                 }`}
               >
                 {skill.title}

@@ -13,6 +13,7 @@ import ProjectDetails from "./Pages/ProjectDetails";
 import Blog from "./Pages/Blog";
 import AppSettingsWrapper from "./utils/AppSettingsWrapper";
 import DarkModeGrainCanvas from "./Components/Global/DarkModeGrainCanvas";
+import "./styles/global.css";
 
 function App() {
   const isOpen = useSelector((state: RootState) => state.menu.isOpen);

@@ -27,7 +27,7 @@ export default function NavButton({ toggle, isOpen }: NavButtonProps) {
   const currentState = isOpen ? "open" : "closed";
 
   return (
-    <button onClick={toggle} className="mt-1">
+    <button onClick={toggle}>
       <svg width="30" height="30" viewBox="0 0 23 23">
         <Path
           initial={currentState}

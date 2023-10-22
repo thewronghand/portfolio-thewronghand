@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import NavItem from "./NavItem";
 import { useDarkMode } from "../../utils/hooks/useDarkMode";
 import { useColorScheme } from "../../utils/hooks/useColorScheme";
+import { navStyle } from "./headerComponents.css";
 
 export default function Nav() {
   const darkMode = useDarkMode();
@@ -13,13 +14,13 @@ export default function Nav() {
         color: darkMode ? colorScheme.DARK.TEXT : colorScheme.LIGHT.TEXT,
         background: darkMode ? colorScheme.DARK.BG : colorScheme.LIGHT.BG,
       }}
-      className={` flex justify-center items-center flex-col space-y-4  text-5xl w-screen h-screen z-10 fixed transition-all duration-300 ease-in-out`}
+      className={navStyle.container}
       variants={containerVariants}
       initial="hidden"
       animate="visible"
       exit="exit"
     >
-      <div className=" font-moric font-bold">
+      <div className={navStyle.list}>
         <NavItem number="01" path="/" title="HoME" />
         <NavItem number="02" path="/about" title="ABoUT" />
         <NavItem number="03" path="/projects" title="PRoJECTS" />

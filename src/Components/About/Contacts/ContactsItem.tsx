@@ -1,16 +1,15 @@
 import { useState } from "react";
 import { Contact, ContactMisc, ContactMiscData } from "../../../types";
 import { motion } from "framer-motion";
+import { contactsItemStyle, listItemStyle } from "./contactsComponents.css";
 
 function ListItem({ title, children, isMisc = false }: ListItemProps) {
   const [isHovered, setHovered] = useState(false);
   if (!isMisc)
     return (
-      <li className="flex items-center mx-2">
-        <section className="mr-2 text-3xl py-4 pr-2 border-r-2 border-r-current cursor-default min-w-[102px]">
-          {title}
-        </section>
-        <section className="text-xl min-w-[206px]">
+      <li className={listItemStyle.container}>
+        <section className={listItemStyle.title}>{title}</section>
+        <section className={listItemStyle.itemSection}>
           <motion.div
             initial="hidden"
             animate={isHovered ? "visible" : "hidden"}
@@ -20,16 +19,16 @@ function ListItem({ title, children, isMisc = false }: ListItemProps) {
               stiffness: 700,
               damping: 30,
             }}
-            className="flex items-center"
+            className={listItemStyle.motionDiv}
           >
             <motion.span
               variants={arrowVariants}
-              className="absolute left-[-1.5rem] text-xl text-blue-400"
+              className={listItemStyle.arrow}
             >
               ➔
             </motion.span>
             <span
-              className="text-lg lg:text-xl"
+              className={listItemStyle.text}
               onMouseOver={() => {
                 setHovered(true);
               }}
@@ -44,11 +43,9 @@ function ListItem({ title, children, isMisc = false }: ListItemProps) {
       </li>
     );
   return (
-    <li className="flex items-center mx-2">
-      <section className="mr-2 text-3xl py-4 pr-2 border-r-2 border-r-current cursor-default min-w-[102px]">
-        {title}
-      </section>
-      <section className="text-xl min-w-[206px]">{children}</section>
+    <li className={listItemStyle.misc.container}>
+      <section className={listItemStyle.misc.title}>{title}</section>
+      <section className={listItemStyle.misc.itemSection}>{children}</section>
     </li>
   );
 }
@@ -58,57 +55,35 @@ export default function ContactsItem({ contact }: ContactsItemProps) {
     let content;
     switch (contact.type) {
       case CONTACT_TYPES.MAIL:
-        content = (
-          <a
-            className="hover:text-blue-400 transition-all ease-in-out"
-            href={`mailto:${contact.data}`}
-          >
-            {contact.subtitle}
-          </a>
-        );
+        content = <a href={`mailto:${contact.data}`}>{contact.subtitle}</a>;
         break;
       case CONTACT_TYPES.TEL:
-        content = (
-          <a
-            className="hover:text-blue-400 transition-all ease-in-out"
-            href={`tel:${contact.data}`}
-          >
-            {contact.subtitle}
-          </a>
-        );
+        content = <a href={`tel:${contact.data}`}>{contact.subtitle}</a>;
         break;
       case CONTACT_TYPES.URL:
         content = (
-          <a
-            className="hover:text-blue-400 transition-all ease-in-out"
-            href={contact.data}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href={contact.data} target="_blank" rel="noopener noreferrer">
             {contact.subtitle}
           </a>
         );
         break;
       default:
-        content = (
-          <section className="hover:text-blue-400 transition-all ease-in-out">
-            {contact.subtitle}
-          </section>
-        );
+        content = <section>{contact.subtitle}</section>;
     }
     return <ListItem title={contact.title}>{content}</ListItem>;
   }
 
   return (
     <ListItem title={contact.title} isMisc={true}>
-      <ul className="flex">
+      <ul className={contactsItemStyle.misc.list}>
         {contact.data.map((item: ContactMiscData) => (
-          <li
-            key={item.title}
-            className="w-8 h-8 mx-[2px] hover:-translate-y-1 ease-in-out transition-all active:translate-y-0"
-          >
+          <li key={item.title} className={contactsItemStyle.misc.item}>
             <a href={`${item.url}`} target="_blank" rel="noopener noreferrer">
-              <img src={item.img} alt={item.title} />
+              <img
+                src={item.img}
+                alt={item.title}
+                className={contactsItemStyle.misc.img}
+              />
             </a>
           </li>
         ))}

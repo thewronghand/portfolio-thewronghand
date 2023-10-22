@@ -5,6 +5,7 @@ import { setColorScheme } from "../../redux/slices/colorSchemeSlice";
 import { useDarkMode } from "../../utils/hooks/useDarkMode";
 import { useColorScheme } from "../../utils/hooks/useColorScheme";
 import { createPortal } from "react-dom";
+import { colorButtonStyle } from "./headerComponents.css";
 
 export default function ColorButton() {
   const darkMode = useDarkMode();
@@ -45,7 +46,7 @@ export default function ColorButton() {
       <button
         ref={colorButtonRef}
         onClick={toggleModal}
-        className=" font-young-serif pt-1 cursor-pointer"
+        className={colorButtonStyle.button}
       >
         Color
       </button>
@@ -53,7 +54,7 @@ export default function ColorButton() {
         createPortal(
           <section
             ref={modalRef}
-            className="font-young-serif fixed z-50 top-12 right-24 flex flex-col p-2 px-4 rounded-lg shadow-md"
+            className={colorButtonStyle.modal}
             style={{
               color: darkMode ? colorScheme.DARK.TEXT : colorScheme.LIGHT.TEXT,
               background: darkMode ? colorScheme.DARK.BG : colorScheme.LIGHT.BG,

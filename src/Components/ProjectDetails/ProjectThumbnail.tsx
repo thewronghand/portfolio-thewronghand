@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { projectThumbnailStyle as style } from "./projectDetailsComponents.css";
 
 export default function ProjectThumbnail({
   bgColor,
@@ -9,19 +10,15 @@ export default function ProjectThumbnail({
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className=""
     >
-      <section
-        style={{ background: bgColor }}
-        className="shadow-lg rounded-2xl aspect-auto flex justify-center items-center p-10"
-      >
+      <section style={{ background: bgColor }} className={style.container}>
         <motion.img
           src={image}
           alt="thumbnail"
           initial="hidden"
           animate="visible"
           variants={imgVariants}
-          className="sm:w-3/5 lg:w-2/5"
+          className={style.logo}
         />
       </section>
     </motion.section>

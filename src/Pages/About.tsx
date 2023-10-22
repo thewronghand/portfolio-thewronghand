@@ -1,4 +1,3 @@
-import { useDarkMode } from "../utils/hooks/useDarkMode";
 import useFetchDocument from "../utils/hooks/useFetchDocument";
 import { ContactSet, Profile, SkillSet } from "../types";
 import ProfileBox from "../Components/About/ProfileBox";
@@ -8,11 +7,10 @@ import ContactContainer from "../Components/About/Contacts/ContactsContainer";
 import { useCacheSkillImages } from "../utils/hooks/useCacheSkillImages";
 import { motion, AnimatePresence } from "framer-motion";
 import { useMediaQuery } from "../utils/hooks/useMediaQuery";
-import { useColorScheme } from "../utils/hooks/useColorScheme";
+import Background from "../Components/Global/Background";
+import { aboutStyle as style } from "./pages.css";
 
 export default function About() {
-  const darkMode = useDarkMode();
-  const colorScheme = useColorScheme();
   const {
     data: profileData,
     loading: profileLoading,
@@ -33,81 +31,83 @@ export default function About() {
 
   return (
     <AnimatePresence>
-      <motion.div
-        style={{
-          color: darkMode ? colorScheme.DARK.TEXT : colorScheme.LIGHT.TEXT,
-          background: darkMode ? colorScheme.DARK.BG : colorScheme.LIGHT.BG,
-        }}
-        className={`transition-all duration-300 ease-in-out pt-10 xl:pt-0 min-h-screen`}
-        initial="hidden"
-        animate="visible"
-      >
-        <motion.main className="flex flex-col-reverse xl:flex-row md:justify-between w-full">
-          <motion.section
-            className="flex flex-col w-full p-10 ml-0 items-center lg:ml-32 lg:w-2/3 xl:w-3/5 2xl:ml-96"
-            variants={containerVariants}
-          >
-            <motion.section variants={itemVariants}>
-              {profileError && (
-                <div>Failed to fetch profile data : {profileError.message}</div>
-              )}
-              {!profileLoading && !profileError && profileData && (
-                <ProfileBox description={profileData.description} />
-              )}
-            </motion.section>
+      <Background>
+        <motion.div
+          className={style.container}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.main className={style.main}>
             <motion.section
-              className="w-full flex flex-col 2xl:flex-row"
+              className={style.profileSection}
               variants={containerVariants}
             >
-              <motion.section
-                className="mt-16 w-full 2xl:w-1/2"
-                variants={itemVariants}
-              >
-                {skillsError && (
-                  <div>Failed to fetch skill data : {skillsError.message}</div>
-                )}
-                {!skillsLoading && !skillsError && skillsData && (
-                  <SkillContainer data={skillsData} />
-                )}
-              </motion.section>
-              <motion.section
-                className="mt-16 w-full 2xl:w-1/2"
-                variants={itemVariants}
-              >
-                {contactsError && (
+              <motion.section variants={itemVariants}>
+                {profileError && (
                   <div>
-                    Failed to fetch skill data : {contactsError.message}
+                    Failed to fetch profile data : {profileError.message}
                   </div>
                 )}
-                {!contactsLoading && !contactsError && contactsData && (
-                  <ContactContainer data={contactsData} />
+                {!profileLoading && !profileError && profileData && (
+                  <ProfileBox description={profileData.description} />
                 )}
               </motion.section>
+              <motion.section
+                className={style.skillsAndContactsSection}
+                variants={containerVariants}
+              >
+                <motion.section
+                  className={style.skillsAndContactsChildren}
+                  variants={itemVariants}
+                >
+                  {skillsError && (
+                    <div>
+                      Failed to fetch skill data : {skillsError.message}
+                    </div>
+                  )}
+                  {!skillsLoading && !skillsError && skillsData && (
+                    <SkillContainer data={skillsData} />
+                  )}
+                </motion.section>
+                <motion.section
+                  className={style.skillsAndContactsChildren}
+                  variants={itemVariants}
+                >
+                  {contactsError && (
+                    <div>
+                      Failed to fetch skill data : {contactsError.message}
+                    </div>
+                  )}
+                  {!contactsLoading && !contactsError && contactsData && (
+                    <ContactContainer data={contactsData} />
+                  )}
+                </motion.section>
+              </motion.section>
             </motion.section>
-          </motion.section>
-          {profileData && (
-            <motion.img
-              src={profileData.imgUrl}
-              alt={profileData.imgUrl}
-              className="rounded-xl object-cover min-w-[250px] m-6 h-[60vh] xl:w-2/5 2xl:w-1/5 xl:m-0 xl:h-2/3 xl:rounded-none xl:rounded-bl-[20%]"
-              initial={{ opacity: 0, y: -100 }}
-              animate={{
-                opacity: 1,
-                y: 0,
-                transition: {
-                  delay: isSmallerThanXL ? 0.4 : 1.5,
-                  duration: 0.7,
-                  ...(isSmallerThanXL && {
-                    type: "spring",
-                    damping: 11,
-                    stiffness: 100,
-                  }),
-                },
-              }}
-            />
-          )}
-        </motion.main>
-      </motion.div>
+            {profileData && (
+              <motion.img
+                src={profileData.imgUrl}
+                alt={profileData.imgUrl}
+                className={style.profileImage}
+                initial={{ opacity: 0, y: -100 }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    delay: isSmallerThanXL ? 0.4 : 1.5,
+                    duration: 0.7,
+                    ...(isSmallerThanXL && {
+                      type: "spring",
+                      damping: 11,
+                      stiffness: 100,
+                    }),
+                  },
+                }}
+              />
+            )}
+          </motion.main>
+        </motion.div>
+      </Background>
     </AnimatePresence>
   );
 }

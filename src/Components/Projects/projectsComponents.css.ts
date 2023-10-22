@@ -95,8 +95,13 @@ export const projectListItemStyle = {
     },
   }),
   type: style({
+    display: "flex",
+    alignItems: "center",
     "@media": {
-      [mediaQueries.SCREEN_LG]: { fontSize: "1.125rem", lineHeight: "1.75rem" },
+      [mediaQueries.SCREEN_LG]: {
+        fontSize: "1.125rem",
+        lineHeight: "1.75rem",
+      },
     },
   }),
 };

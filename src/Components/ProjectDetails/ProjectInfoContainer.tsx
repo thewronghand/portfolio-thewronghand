@@ -13,9 +13,7 @@ export default function ProjectInfoContainer({
   return (
     <section className="">
       <section className={style.info.title}>{data.title}</section>
-      <section className="text-xl text-right mb-2 pr-2 cursor-default">
-        {data.type}
-      </section>
+      <section className={style.info.type}>{data.type}</section>
       <section className={style.info.description}>{data.description}</section>
       <ul className={style.info.stackList}>
         {data.stacks.map((item) => (

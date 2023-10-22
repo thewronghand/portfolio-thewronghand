@@ -4,12 +4,13 @@ import { mediaQueries } from "../../styles/mediaQueries";
 export const projectImageListStyle = {
   container: style({ paddingBottom: "8rem" }),
   title: style({
-    paddingBottom: "0.5rem",
-    paddingTop: "1rem",
+    paddingBottom: "1rem",
+    paddingTop: "1.5rem",
     marginBottom: "1rem",
     borderBottom: "2px solid currentcolor",
     fontSize: "1.875rem",
     lineHeight: "2.25rem",
+    cursor: "default",
   }),
   imageList: style({ paddingLeft: "1.5rem", paddingRight: "1.5rem" }),
   imageListItem: style({
@@ -45,14 +46,19 @@ export const projectInfoContainerStyle = {
       textAlign: "right",
       cursor: "default",
     }),
-    description: style({ paddingBottom: "0.5rem" }),
+    description: style({
+      paddingBottom: "0.5rem",
+      paddingLeft: "1.5rem",
+      paddingRight: "1.5rem",
+    }),
     stackList: style({
       display: "flex",
       marginBottom: "0.5rem",
       flexWrap: "wrap",
       alignContent: "flex-start",
       listStyle: "none",
-      paddingLeft: 0,
+      paddingLeft: "1.5rem",
+      paddingRight: "1.5rem",
     }),
     stackListItem: style({
       paddingTop: "0.25rem",
@@ -69,6 +75,8 @@ export const projectInfoContainerStyle = {
   docs: {
     container: style({
       display: "flex",
+      paddingLeft: "1.5rem",
+      paddingRight: "1.5rem",
     }),
     title: style({
       marginRight: "0.5rem",
@@ -93,6 +101,8 @@ export const projectInfoContainerStyle = {
       display: "flex",
       marginTop: "0.25rem",
       alignItems: "center",
+      paddingLeft: "1.5rem",
+      paddingRight: "1.5rem",
     }),
     title: style({
       marginRight: "0.5rem",
@@ -122,6 +132,8 @@ export const projectInfoContainerStyle = {
         marginTop: "1.5rem",
         justifyContent: "flex-end",
         alignItems: "center",
+        paddingLeft: "1.5rem",
+        paddingRight: "1.5rem",
       }),
       title: style({
         marginRight: "1rem",

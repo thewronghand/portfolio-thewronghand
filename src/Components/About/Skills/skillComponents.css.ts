@@ -17,7 +17,7 @@ export const skillCardStyle = {
       "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
   }),
   imgSection: style({
-    height: "66.666666%",
+    minHeight: "66.666666%",
   }),
   img: style({
     width: "100%",
@@ -26,7 +26,7 @@ export const skillCardStyle = {
   descriptionSection: style({
     padding: "0.5rem",
     marginTop: "0.5rem",
-    height: "33.333333%",
+    minHeight: "33.333333%",
   }),
   title: style({ paddingLeft: "0.5rem", fontWeight: 700 }),
   list: style({
@@ -112,17 +112,12 @@ export const mobileSkillListStyle = {
     marginRight: "0.5rem",
     width: "50%",
     listStyle: "none",
+    padding: 0,
   }),
   skillSetItem: style({
     paddingLeft: "0.5rem",
     paddingRight: "0.5rem",
     borderRadius: "0.5rem",
-    transitionProperty: "all",
-    transitionTimingFunction: [
-      "cubic-bezier(0.4, 0, 0.2, 1)",
-      "cubic-bezier(0.4, 0, 0.2, 1)",
-    ],
-    transitionDuration: ["300ms", "300ms"],
     cursor: "pointer",
     padding: "2px",
     margin: "1px",
@@ -132,5 +127,83 @@ export const mobileSkillListStyle = {
     backgroundColor: "#60A5FA",
     cursor: "default",
     ":hover": { backgroundColor: "#60A5FA" },
+  }),
+  skillItemList: style({
+    display: "flex",
+    flexDirection: "column",
+    width: "50%",
+    listStyle: "none",
+    flexWrap: "wrap",
+    alignItems: "flex-start",
+    padding: 0,
+  }),
+  skillItem: style({
+    padding: "0.25rem",
+    paddingLeft: "0.5rem",
+    paddingRight: "0.5rem",
+    marginBottom: "0.25rem",
+    borderRadius: "1rem",
+    color: "#ffffff",
+    transitionProperty: "all",
+    transitionTimingFunction: [
+      "cubic-bezier(0.4, 0, 0.2, 1)",
+      "cubic-bezier(0.4, 0, 0.2, 1)",
+    ],
+    transitionDuration: ["300ms", "300ms"],
+    cursor: "pointer",
+    boxShadow:
+      "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+    margin: "1px",
+    ":hover": {},
+  }),
+  skillItemSelected: style({
+    ":hover": {
+      cursor: "default",
+    },
+  }),
+};
+
+export const skillContainerStyle = {
+  container: style({
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  }),
+  title: style({
+    paddingBottom: "1.25rem",
+    marginBottom: "2.5rem",
+    borderBottom: "2px solid currentcolor",
+    width: "100%",
+    fontSize: "3rem",
+    lineHeight: 1,
+    cursor: "default",
+  }),
+  cardAndListSection: style({
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
+    "@media": {
+      [mediaQueries.SCREEN_SM]: {
+        flexDirection: "row",
+      },
+      [mediaQueries.SCREEN_2XL]: {
+        flexDirection: "column",
+      },
+      [mediaQueries.SCREEN_5XL]: {
+        flexDirection: "row",
+      },
+    },
+  }),
+  cardSection: style({
+    display: "flex",
+    justifyContent: "center",
+    width: "100%",
+    minWidth: "325px",
+  }),
+  desktopSkillListSection: style({
+    display: "flex",
+    marginTop: "2.5rem",
+    justifyContent: "center",
+    width: "100%",
   }),
 };

@@ -40,7 +40,7 @@ export default function MobileSkillList({
           </li>
         ))}
       </ul>
-      <ul className="w-1/2 flex flex-wrap items-start content-start">
+      <ul className={style.skillItemList}>
         {selectedCategory?.data.map((skill: Skill) => (
           <li
             key={skill.title}
@@ -48,12 +48,11 @@ export default function MobileSkillList({
               onItemClick(skill);
             }}
             style={{ background: skill.bgColorCode }}
-            className={`${
+            className={`${style.skillItem} ${
               selectedSkill &&
               selectedSkill.title === skill.title &&
-              "cursor-default hover:cursor-default filter brightness-[115%] saturate-[150%]"
-            } cursor-pointer p-1 px-3 m-[1px] mb-1 mr-1 shadow-md rounded-2xl h-8 text-white hover:filter hover:brightness-[110%]
-            transition-all duration-300 ease-in-out
+              style.skillItemSelected
+            }
             `}
           >
             {skill.title}

@@ -10,20 +10,26 @@ export const contactsContainerStyle = {
     paddingLeft: "0.5rem",
   }),
   title: style({
-    fontSize: "3rem",
-    width: "100%",
-    marginBottom: "2.5rem",
-    borderBottomWidth: "2px",
-    borderColor: "currentcolor",
     paddingBottom: "1.25rem",
+    marginBottom: "2.5rem",
+    borderBottom: "2px solid currentcolor",
+    width: "100%",
+    fontSize: "3rem",
+    lineHeight: 1,
     cursor: "default",
   }),
   listSection: style({
-    paddingLeft: "1.5rem",
     paddingRight: "1.5rem",
     width: "100%",
+
+    "@media": {
+      [mediaQueries.SCREEN_SM]: {
+        paddingLeft: "1.5rem",
+      },
+    },
   }),
   list: style({
+    padding: 0,
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "space-between",
@@ -51,7 +57,12 @@ export const listItemStyle = {
   itemSection: style({
     fontSize: "1.25rem",
     lineHeight: "1.75rem",
-    minWidth: "206px",
+    minWidth: "100px",
+    "@media": {
+      [mediaQueries.SCREEN_SM]: {
+        minWidth: "206px",
+      },
+    },
   }),
   motionDiv: style({
     display: "flex",
@@ -65,7 +76,7 @@ export const listItemStyle = {
     left: "-1.5rem",
   }),
   text: style({
-    fontSize: "1.125rem",
+    fontSize: "1rem",
     lineHeight: "1.75rem",
     "@media": {
       [mediaQueries.SCREEN_LG]: { fontSize: "1.25rem", lineHeight: "1.75rem" },

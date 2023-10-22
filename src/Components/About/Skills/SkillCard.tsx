@@ -50,7 +50,7 @@ const containerVariants = {
       stiffness: 100,
     },
   },
-  exit: { x: "-160%" },
+  exit: { opacity: 0 },
 };
 
 const imageVariants = {

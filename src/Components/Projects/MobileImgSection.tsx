@@ -41,7 +41,7 @@ const containerVariants = {
     y: 0,
     opacity: 1,
     transition: {
-      duration: 0.5,
+      duration: 0.3,
       type: "spring",
       damping: 14,
       stiffness: 100,
@@ -63,4 +63,5 @@ const imageVariants = {
       stiffness: 100,
     },
   },
+  exit: { opacity: 0 },
 };

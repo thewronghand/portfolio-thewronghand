@@ -62,7 +62,7 @@ export const navStyle = {
     display: "flex",
     position: "fixed",
     zIndex: 10,
-    marginTop: "1rem",
+    marginTop: "0",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",

@@ -160,3 +160,36 @@ export const projectDetailsStyle = {
     },
   }),
 };
+
+export const blogStyle = {
+  container: style({
+    width: "100%",
+    height: "100%",
+    paddingTop: "5rem",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    transitionProperty: "all",
+    transitionTimingFunction: [
+      "cubic-bezier(0.4, 0, 0.2, 1)",
+      "cubic-bezier(0.4, 0, 0.2, 1)",
+    ],
+    transitionDuration: ["300ms", "300ms"],
+  }),
+  iframeSection: style({
+    display: "flex",
+    margin: "2.5rem",
+    justifyContent: "center",
+    width: "100%",
+    height: "1000px",
+    "@media": {
+      [mediaQueries.SCREEN_MD]: { height: "650px" },
+    },
+  }),
+  iframe: style({
+    width: "100%",
+    maxWidth: "1000px",
+    height: "100%",
+  }),
+};

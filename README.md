@@ -1,6 +1,6 @@
 # 프론트엔드 개발자 이의현(thewronghand)의 포트폴리오 사이트입니다.
 
-[Ver. 0.0.1]
+[Ver. 0.0.5]
 
 [목표]
 
@@ -11,6 +11,8 @@
 - MVP를 목표로 구현한 이후에 여러 기능을 추가합니다.
 - 커스텀 도메인을 구매하여 연결합니다.
 - 다크 모드를 구현합니다.
+- 컬러 모드를 구현합니다.
+- 별도 구현한 블로그 앱을 연동합니다.
 
 ## 기술 스택
 
@@ -20,7 +22,9 @@
 - React
 - Vite
 - React-router
-- Tailwind-css
+- ~~Tailwind-css~~
+- vanilla-extract-css
+- framer-motion
 - Redux-toolkit
 - React-query (TBD)
 

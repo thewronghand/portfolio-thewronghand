@@ -8,6 +8,7 @@ import { useCacheSkillImages } from "../utils/hooks/useCacheSkillImages";
 import { motion, AnimatePresence } from "framer-motion";
 import { useMediaQuery } from "../utils/hooks/useMediaQuery";
 import Background from "../Components/Global/Background";
+import { aboutStyle as style } from "./pages.css";
 
 export default function About() {
   const {
@@ -32,13 +33,13 @@ export default function About() {
     <AnimatePresence>
       <Background>
         <motion.div
-          className={`transition-all duration-300 ease-in-out pt-10 xl:pt-0 min-h-screen`}
+          className={style.container}
           initial="hidden"
           animate="visible"
         >
-          <motion.main className="flex flex-col-reverse xl:flex-row md:justify-between w-full">
+          <motion.main className={style.main}>
             <motion.section
-              className="flex flex-col w-full p-10 ml-0 items-center lg:ml-32 lg:w-2/3 xl:w-3/5 2xl:ml-96"
+              className={style.profileSection}
               variants={containerVariants}
             >
               <motion.section variants={itemVariants}>
@@ -52,11 +53,11 @@ export default function About() {
                 )}
               </motion.section>
               <motion.section
-                className="w-full flex flex-col 2xl:flex-row"
+                className={style.skillsAndContactsSection}
                 variants={containerVariants}
               >
                 <motion.section
-                  className="mt-16 w-full 2xl:w-1/2"
+                  className={style.skillsAndContactsChildren}
                   variants={itemVariants}
                 >
                   {skillsError && (
@@ -69,7 +70,7 @@ export default function About() {
                   )}
                 </motion.section>
                 <motion.section
-                  className="mt-16 w-full 2xl:w-1/2"
+                  className={style.skillsAndContactsChildren}
                   variants={itemVariants}
                 >
                   {contactsError && (
@@ -87,7 +88,7 @@ export default function About() {
               <motion.img
                 src={profileData.imgUrl}
                 alt={profileData.imgUrl}
-                className="rounded-xl object-cover min-w-[250px] m-6 h-[60vh] xl:w-2/5 2xl:w-1/5 xl:m-0 xl:h-2/3 xl:rounded-none xl:rounded-bl-[20%]"
+                className={style.profileImage}
                 initial={{ opacity: 0, y: -100 }}
                 animate={{
                   opacity: 1,

@@ -1,6 +1,7 @@
 import VitriolLogo from "./VitriolLogo";
 import Anchor from "../../utils/Anchor";
 import { motion } from "framer-motion";
+import { blogIntroStyle as style } from "./blogComponents.css";
 
 export default function BlogIntro() {
   return (
@@ -8,18 +9,13 @@ export default function BlogIntro() {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="mx-16"
+      className={style.container}
     >
-      <motion.section
-        variants={itemVariants}
-        className="text-5xl flex items-center"
-      >
+      <motion.section variants={itemVariants} className={style.titleSection}>
         <VitriolLogo />
-        <span className="ml-1 pt-2 cursor-default font-young-serif">
-          Vitriol
-        </span>
+        <span className={style.title}>Vitriol</span>
       </motion.section>
-      <motion.p variants={itemVariants} className="mt-6">
+      <motion.p variants={itemVariants} className={style.description}>
         Vitriol은 <Anchor href="https://obsidian.md/">Obsidian</Anchor>의
         Digital Garden 플러그인을 기반으로 한 개인 블로그입니다. 그래프와 관련된
         UI 상호작용을 원활히 관리하기 위해 React로 구성하였습니다.

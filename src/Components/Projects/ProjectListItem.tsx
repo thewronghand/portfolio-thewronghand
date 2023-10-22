@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Project } from "../../types";
 import { useState } from "react";
+import { projectListItemStyle as style } from "./projectsComponents.css";
 
 interface ProjectListItemProp {
   item: Project;
@@ -25,13 +26,10 @@ export default function ProjectListItem({
   const [isHovered, setHovered] = useState(false);
 
   return (
-    <motion.li
-      className="w-full border-t-[1px] last:border-b-[1px] border-current py-4 px-4 lg:py-5 relative"
-      variants={itemVariants}
-    >
+    <motion.li className={style.container} variants={itemVariants}>
       <Link to={item.id}>
         <section
-          className="flex justify-between"
+          className={style.listItemSection}
           onMouseOver={() => {
             onHover(item);
             setHovered(true);
@@ -50,17 +48,14 @@ export default function ProjectListItem({
               stiffness: 700,
               damping: 30,
             }}
-            className="flex items-center"
+            className={style.motionWrapper}
           >
-            <motion.span
-              variants={arrowVariants}
-              className="absolute left-[-1.5rem] text-xl"
-            >
+            <motion.span variants={arrowVariants} className={style.arrow}>
               ➔
             </motion.span>
-            <span className="text-lg lg:text-xl">{item.title}</span>
+            <span className={style.title}>{item.title}</span>
           </motion.div>
-          <span className="lg:text-lg">{item.type}</span>
+          <span className={style.type}>{item.type}</span>
         </section>
       </Link>
     </motion.li>

@@ -4,6 +4,7 @@ import ProjectListItem from "./ProjectListItem";
 import ProjectListImgSection from "./ProjectListImgSection";
 import MobileImgSection from "./MobileImgSection";
 import { motion } from "framer-motion";
+import { projectListStyle as style } from "./projectsComponents.css";
 
 interface ProjectListProps {
   data: Project[];
@@ -13,28 +14,30 @@ export default function ProjectList({ data }: ProjectListProps) {
   const [hoveredItem, setHoveredItem] = useState<Project | null>(null);
 
   return (
-    <main className="w-full h-full flex flex-col md:flex-row">
+    <main className={style.container}>
       <MobileImgSection hoveredItem={hoveredItem} />
       <ProjectListImgSection hoveredItem={hoveredItem} />
-      <section className="md:w-1/2 md:flex md:items-center lg:mr-10">
-        <section className="w-full 3xl:w-10/12">
+      <section className={style.listSectionWrapper}>
+        <section className={style.listSection}>
           <motion.section
-            className="cursor-default mx-6 flex items-center justify-between"
+            className={style.titleSection}
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ ease: "easeOut", duration: 0.5, delay: 0 }}
           >
-            <section className=" text-5xl pb-4">Projects</section>
-            <section className="mr-4 text-3xl">{data.length} projects</section>
+            <section className={style.title}>Projects</section>
+            <section className={style.projectCounter}>
+              {data.length} projects
+            </section>
           </motion.section>
 
           <motion.div
-            className="flex flex-col w-full overflow-y-auto px-6"
+            className={style.listWrapper}
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            <ul>
+            <ul className={style.list}>
               {data.map((item: Project) => (
                 <ProjectListItem
                   key={item.title}

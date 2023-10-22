@@ -1,17 +1,18 @@
 import { AnimatePresence } from "framer-motion";
 import { ProjectListImgSectionProps } from "../../types";
 import { motion } from "framer-motion";
+import { mobileImgSectionStyle as style } from "./projectsComponents.css";
 
 export default function MobileImgSection({
   hoveredItem,
 }: ProjectListImgSectionProps) {
   return (
-    <section className="h-[440px] mt-16 md:hidden">
+    <section className={style.container}>
       <AnimatePresence>
         {hoveredItem && (
           <motion.section
             style={{ background: `${hoveredItem.thumbnailBgColor}` }}
-            className="mx-8 rounded-xl flex justify-center items-center shadow-lg"
+            className={style.imgBackground}
             initial="hidden"
             animate={hoveredItem ? "show" : "exit"}
             variants={containerVariants}
@@ -22,7 +23,7 @@ export default function MobileImgSection({
               key={hoveredItem.title}
               src={hoveredItem.thumbnailLogo}
               alt={hoveredItem.title}
-              className="w-4/5 sm:w-3/5"
+              className={style.imgLogo}
               initial="hidden"
               animate={hoveredItem ? "show" : "exit"}
               variants={imageVariants}

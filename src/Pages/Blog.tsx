@@ -1,9 +1,9 @@
-import { motion } from "framer-motion";
-import BlogIntro from "../Components/Blog/BlogIntro";
-import { useEffect } from "react";
-import { useColorScheme } from "../utils/hooks/useColorScheme";
-import { blogStyle as style } from "./pages.css";
-import Background from "../Components/Global/Background";
+import { motion } from 'framer-motion';
+import BlogIntro from '../Components/Blog/BlogIntro';
+import { useEffect } from 'react';
+import { useColorScheme } from '../utils/hooks/useColorScheme';
+import { blogStyle as style } from './pages.css';
+import Background from '../Components/Global/Background';
 
 export default function Blog() {
   const colorScheme = useColorScheme();
@@ -22,10 +22,12 @@ export default function Blog() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.5 }}
         >
-          <iframe
-            src="https://vitriol-345e3.web.app/"
-            className={style.iframe}
-          ></iframe>
+          <div className={style.iframeContainer}>
+            <iframe
+              src="https://vitriol-345e3.web.app/"
+              className={style.iframe}
+            ></iframe>
+          </div>
         </motion.div>
       </main>
     </Background>
